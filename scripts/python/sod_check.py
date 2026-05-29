@@ -28,7 +28,7 @@ from grclib import load_register
 # Leave as "." if you run this from inside your registers folder.
 # ----------------------------------------------------------------------------
 
-REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\registers>>"   # CHANGE ME
+REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\00_Admin\registers>>"   # CHANGE ME
 
 # ^^^                          CHANGE ME                                  ^^^
 # ============================================================================
