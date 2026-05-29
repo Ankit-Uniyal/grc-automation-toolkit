@@ -1,0 +1,6 @@
+VendorID,Name,ServiceProvided,DataAccessed,BusinessDependence,Tier,Owner,LastAssessed,ReassessFrequencyMonths,NextAssessment,CertType,CertExpiry,Status,RiskScore
+VEN-001,Acme Payroll Ltd,Payroll processing,"PII, financial",4,Critical,HR Manager,2026-01-10,12,2027-01-10,SOC2,2026-09-30,Approved,20
+VEN-002,SecureMail Inc,Email filtering,confidential,3,Medium,IT Manager,2026-02-20,12,2027-02-20,ISO27001,2027-05-15,Approved,9
+VEN-003,CleanOffice Services,Facilities cleaning,public,1,Low,Facilities,2025-12-01,24,2027-12-01,None,,Approved,1
+VEN-004,DataShred Co,Document destruction,confidential,2,Medium,Facilities,2026-03-05,12,2027-03-05,ISO27001,2026-07-20,Approved,6
+VEN-005,CloudBackup Partner,Offsite backup,"PII, confidential",4,High,IT Manager,2026-01-25,12,2027-01-25,SOC2,2026-11-10,Conditional,16
