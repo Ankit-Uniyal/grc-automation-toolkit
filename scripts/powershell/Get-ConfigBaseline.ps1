@@ -26,7 +26,7 @@ param(
 # vvv CHANGE ME vvv ---------------------------------------------------------
 # Where to write the baseline snapshot. Keep one file per host.
 if (-not $OutFile) {
-    $OutFile = "<<CHANGE_ME: \\fileserver\GRC\evidence\config\baseline-$env:COMPUTERNAME.json>>"  # CHANGE ME
+    $OutFile = "<<CHANGE_ME: \\fileserver\GRC\04_Evidence\config\baseline-$env:COMPUTERNAME.json>>"  # CHANGE ME
 }
 # ^^^ CHANGE ME ^^^ ---------------------------------------------------------
 
