@@ -1,0 +1,6 @@
+RoleA,RoleB,Conflict
+Vendor-Create,Payment-Approve,Can set up a fake vendor and approve payment
+Purchase-Request,Purchase-Approve,Can self-approve purchases
+User-Create,Access-Approve,Can grant own access
+Journal-Entry,Journal-Approve,Can post and approve own entries
+Dev-Deploy,Prod-Approve,Can deploy to production without review
