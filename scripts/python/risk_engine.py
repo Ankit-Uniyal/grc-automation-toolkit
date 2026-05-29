@@ -63,7 +63,13 @@ def main(path: str = RISK_REGISTER_PATH) -> None:
     df["ResidualScore"] = df.ResidualLikelihood * df.ResidualImpact
     df["ResidualBand"] = df.ResidualScore.apply(band)
 
-    df.to_csv(OUTPUT_CSV, index=False)
+    # If the OUTPUT_ paths still contain the CHANGE_ME placeholder, fall back to
+    # relative filenames so the quickstart works out of the box. Set real paths
+    # in the config block above for production runs.
+    out_csv = OUTPUT_CSV if "CHANGE_ME" not in OUTPUT_CSV else "risk-register-scored.csv"
+    out_png = OUTPUT_PNG if "CHANGE_ME" not in OUTPUT_PNG else "risk-heatmap.png"
+
+    df.to_csv(out_csv, index=False)
 
     # Build a 5x5 grid of residual risk counts (Impact rows, Likelihood cols)
     grid = np.zeros((5, 5), dtype=int)
@@ -86,9 +92,9 @@ def main(path: str = RISK_REGISTER_PATH) -> None:
                 plt.text(j, i, grid[i, j], ha="center", va="center")
     plt.title("Residual Risk Heatmap")
     plt.tight_layout()
-    plt.savefig(OUTPUT_PNG, dpi=120)
+    plt.savefig(out_png, dpi=120)
 
-    print("Wrote", OUTPUT_CSV, "and", OUTPUT_PNG)
+    print("Wrote", out_csv, "and", out_png)
     print(df.ResidualBand.value_counts())
 
 
