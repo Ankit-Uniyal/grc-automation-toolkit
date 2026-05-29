@@ -6,13 +6,13 @@
 
 ## 1. What to automate
 
-- **Obligations register** — every legal/regulatory/contractual requirement that applies to you.
-- **Obligation → control mapping** — which controls satisfy each obligation (and gaps).
-- **Compliance calendar** — recurring filings, certifications, attestations, renewals.
-- **Multi-framework crosswalk** — map your controls once, report against ISO 27001 / NIST CSF / SOC 2 / PCI DSS / GDPR simultaneously.
-- **Horizon scanning log** — track regulatory changes and assign impact assessments.
+- **Obligations register** - every legal/regulatory/contractual requirement that applies to you.
+- **Obligation → control mapping** - which controls satisfy each obligation (and gaps).
+- **Compliance calendar** - recurring filings, certifications, attestations, renewals.
+- **Multi-framework crosswalk** - map your controls once, report against ISO 27001 / NIST CSF / SOC 2 / PCI DSS / GDPR simultaneously.
+- **Horizon scanning log** - track regulatory changes and assign impact assessments.
 
-## 2. Data model — `obligations-register.csv`
+## 2. Data model - `obligations-register.csv`
 
 | Column | Notes |
 |---|---|
@@ -79,7 +79,7 @@ Feed the output into the PowerShell/Outlook notification helper (`Send-GrcNotifi
 
 ### 3c. Multi-framework crosswalk
 
-See `docs/11-framework-crosswalk.md` and `scripts/python/build_crosswalk.py` — map each control to clauses across frameworks once, then auto-produce a coverage report per framework.
+See `docs/11-framework-crosswalk.md` and `scripts/python/build_crosswalk.py` - map each control to clauses across frameworks once, then auto-produce a coverage report per framework.
 
 ## 4. Horizon scanning (regulatory change)
 
