@@ -8,10 +8,10 @@
 
 - **Control-to-framework mapping** maintained in one place.
 - **Per-framework coverage reports** generated automatically.
-- **Gap detection** — framework requirements with no mapped control.
+- **Gap detection** - framework requirements with no mapped control.
 - **"Test once, satisfy many"** evidence reuse reporting.
 
-## 2. Data model — `crosswalk.csv`
+## 2. Data model - `crosswalk.csv`
 
 A long/tidy table: one row per (control, framework, clause).
 
@@ -76,7 +76,7 @@ print(f"{len(gaps)} ISO 27001 clauses have NO mapped control")
 
 ## 4. Seeding the crosswalk
 
-The toolkit ships a starter `templates/crosswalk.csv` with common mappings across ISO 27001:2022, NIST CSF, SOC 2 TSC, PCI DSS v4, and GDPR. Extend it to your control set. Maintain it as your single mapping source — every coverage report derives from it.
+The toolkit ships a starter `templates/crosswalk.csv` with common mappings across ISO 27001:2022, NIST CSF, SOC 2 TSC, PCI DSS v4, and GDPR. Extend it to your control set. Maintain it as your single mapping source - every coverage report derives from it.
 
 > **Caveat:** crosswalks are interpretive. Treat auto-mappings as a **starting point** that a human compliance owner validates. Mappings are not legal equivalence.
 
