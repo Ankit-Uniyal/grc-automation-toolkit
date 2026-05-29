@@ -29,7 +29,7 @@ param(
 if (-not $GrcRoot)     { $GrcRoot     = '<<CHANGE_ME: \\fileserver\GRC>>' }          # CHANGE ME
 
 # Root of this toolkit (the 'scripts' folder lives here):
-if (-not $ToolkitRoot) { $ToolkitRoot = '<<CHANGE_ME: \\fileserver\GRC\toolkit>>' }  # CHANGE ME
+if (-not $ToolkitRoot) { $ToolkitRoot = '<<CHANGE_ME: \\fileserver\GRC\00_Admin\toolkit>>' }  # CHANGE ME
 
 # ^^^                          CHANGE ME                                  ^^^
 # ============================================================================
