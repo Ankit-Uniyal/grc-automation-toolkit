@@ -1,0 +1,5 @@
+ChangeID,Title,Type,RiskLevel,Requestor,ApprovedBy,ApprovalDate,ImplementedAt,Outcome,PostReviewDone,LinkedAssets,LinkedIncidentID
+CHG-2026-088,Firewall ruleset update,Normal,High,Network Eng,Change Manager,2026-05-10,2026-05-12,Success,,AST-004,
+CHG-2026-089,Emergency patch domain controller,Emergency,High,SecOps,,2026-05-15,2026-05-15,Success,No,AST-003,
+CHG-2026-090,Add user to finance share,Standard,Low,Helpdesk,Helpdesk,2026-05-16,2026-05-16,Success,,AST-001,
+CHG-2026-091,Upgrade backup software,Normal,Medium,IT Manager,Change Manager,2026-05-18,2026-05-20,Failed,,AST-005,INC-2026-017
