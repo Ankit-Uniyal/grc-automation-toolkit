@@ -7,12 +7,12 @@
 ## 1. What to automate
 
 - **Incident register** with severity, timestamps, and status.
-- **SLA timers** — acknowledge/contain/resolve targets by severity.
-- **Breach-clock** — if reportable, count down the regulatory notification deadline (e.g. 72-hour windows under several regimes).
-- **Escalation** — alert when SLA or breach deadlines approach.
+- **SLA timers** - acknowledge/contain/resolve targets by severity.
+- **Breach-clock** - if reportable, count down the regulatory notification deadline (e.g. 72-hour windows under several regimes).
+- **Escalation** - alert when SLA or breach deadlines approach.
 - **Post-incident review (PIR)** tracking and corrective-action linkage.
 
-## 2. Data model — `incident-register.csv`
+## 2. Data model - `incident-register.csv`
 
 | Column | Notes |
 |---|---|
@@ -88,7 +88,7 @@ print(inc.groupby("Severity")[["TTD_h","TTR_h"]].mean().round(1))
 
 When an incident is resolved, auto-create a PIR checklist file in `08_Incidents/<IncidentID>/` and open a row in the **issue/CAPA register** (`docs/15`) so root-cause actions are tracked to closure rather than forgotten.
 
-> **Important:** the toolkit tracks timers and reminds humans. The decision to declare a breach and notify a regulator is a **human/legal judgment** — never automate the notification itself.
+> **Important:** the toolkit tracks timers and reminds humans. The decision to declare a breach and notify a regulator is a **human/legal judgment** - never automate the notification itself.
 
 ## 5. Scheduling & ownership
 
