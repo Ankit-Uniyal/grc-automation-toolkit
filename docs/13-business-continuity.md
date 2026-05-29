@@ -6,13 +6,13 @@
 
 ## 1. What to automate
 
-- **Business Impact Analysis (BIA) register** — processes, criticality, RTO/RPO, dependencies.
-- **RTO/RPO vs. capability** — flag where recovery targets exceed proven capability.
-- **DR/BCP test calendar** — schedule and chase tabletop/failover exercises.
-- **Test evidence & after-action tracking** — capture results and corrective actions.
-- **Dependency mapping** — link critical processes to assets and vendors.
+- **Business Impact Analysis (BIA) register** - processes, criticality, RTO/RPO, dependencies.
+- **RTO/RPO vs. capability** - flag where recovery targets exceed proven capability.
+- **DR/BCP test calendar** - schedule and chase tabletop/failover exercises.
+- **Test evidence & after-action tracking** - capture results and corrective actions.
+- **Dependency mapping** - link critical processes to assets and vendors.
 
-## 2. Data model — `bia-register.csv`
+## 2. Data model - `bia-register.csv`
 
 | Column | Notes |
 |---|---|
