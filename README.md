@@ -2,56 +2,75 @@
 
 > A practical, end-to-end implementation guide and toolkit for **automating and engineering Governance, Risk & Compliance (GRC)** in organizations that are **not cloud-native** — teams still running GRC on **shared network drives, OneDrive/SharePoint, and Excel**, on **Windows endpoints and on-prem servers**.
 
-If you are a GRC professional, internal auditor, ISMS manager, or risk analyst who currently lives in folders full of spreadsheets and Word documents, this toolkit shows you **exactly how to automate as much of that work as realistically possible** — without buying a SaaS GRC platform and without depending on a public cloud.
+This toolkit covers the **whole GRC program** — not just controls and reminders, but compliance obligations, multi-framework crosswalks, incidents and breach clocks, business continuity, change governance, issues/exceptions/CAPA, internal audit, vulnerability management, configuration drift, data privacy, people/awareness/SoD, and management-review metrics — and shows you how to automate each part using tools you already own (Windows, Office, PowerShell, Python).
 
 ---
 
 ## Who this is for
 
-- GRC / InfoSec teams in SMEs and mid-market firms with **low cloud dependency**.
-- Organizations whose "GRC system" is currently: `\\fileserver\GRC\`, a OneDrive folder, and a stack of Excel/Word files.
-- Auditors and consultants who need a **repeatable, scriptable** way to collect evidence and test controls on-prem.
-- Anyone who wants to move from **manual, calendar-driven GRC** to **automated, data-driven GRC** using tools they already own (Windows, Office, PowerShell, Python).
-
-## What you are NOT required to have
-
-- No SaaS GRC platform (ServiceNow IRM, Archer, OneTrust, etc.).
-- No Azure / AWS / GCP subscription.
-- No paid licenses beyond **Microsoft Office** and the **free, built-in Windows tooling**.
+GRC / InfoSec teams, internal auditors, ISMS/privacy managers, and risk analysts in SMEs and mid-market firms with **low cloud dependency** — where the "GRC system" today is a shared drive, a OneDrive folder, and a stack of Excel/Word files. No SaaS GRC platform and no public-cloud subscription required: only **Microsoft Office** and **free, built-in Windows tooling**.
 
 ---
 
-## Design philosophy: "Automate with what you already own"
+## The automation stack ("automate with what you already own")
 
-The automation stack here is deliberately boring and durable:
+| Layer | Tool | Role |
+|-------|------|------|
+| Scripting/orchestration | **PowerShell 5.1+ / 7** | Files, AD, event logs, scheduling, notifications |
+| Data/analytics | **Python 3.11+** (pandas) | Parsing, scoring, registers, reports |
+| Self-service reporting | **Excel + Power Query** | Refreshable dashboards, zero code |
+| No-code desktop automation | **Power Automate Desktop** | UI automation, emails, file moves |
+| Storage / system of record | **Shared drive + OneDrive/SharePoint** | Your registers and evidence |
+| Scheduling | **Windows Task Scheduler** | Unattended runs |
 
-| Layer | Tool | Why |
-|-------|------|-----|
-| Orchestration / scripting | **PowerShell 5.1+ / 7** | Ships with Windows; great for files, AD, event logs, scheduled tasks. |
-| Data wrangling & analytics | **Python 3.11+** (pandas, openpyxl) | Best for parsing, transforming, and generating reports/registers. |
-| Self-service reporting | **Excel + Power Query (Get & Transform)** | Already on every analyst's desk; refreshable dashboards with zero code. |
-| No-code desktop automation | **Power Automate Desktop (PAD)** | Free with Windows 10/11; automates UI, emails, file moves, approvals. |
-| Storage & "database" | **Shared drive + OneDrive/SharePoint document libraries** | Your existing system of record — we add structure and versioning. |
-| Scheduling | **Windows Task Scheduler** | Runs your scripts unattended on a workstation or server. |
-| Notifications | **Outlook / SMTP via PowerShell** | Reminders, escalations, attestation requests. |
-
-The golden rule: **if a human does it more than once a month and it follows rules, script it.**
+The golden rule: **if a human does it more than once a month and it follows rules, script it.** Automation reduces toil; humans keep accountability for judgment and approvals.
 
 ---
 
-## The GRC automation maturity model
+## Shared engineering layer (don't repeat yourself)
 
-Use this to honestly place yourself and pick your next move. Most "shared folder" teams start at Level 0–1.
+Every script builds on a common foundation:
 
-| Level | Name | Characteristics | Typical tooling |
-|-------|------|-----------------|-----------------|
-| **0** | Manual | Ad-hoc files, no naming standard, evidence emailed around, deadlines missed. | Email + random folders |
-| **1** | Structured | Standard folder taxonomy, file-naming convention, master registers in Excel. | Shared drive + templates |
-| **2** | Assisted | Scripts generate registers, reminders auto-sent, evidence auto-collected from endpoints. | + PowerShell/PAD/Task Scheduler |
-| **3** | Integrated | Single source of truth, controls auto-tested, dashboards refresh themselves, exceptions flagged. | + Python + Power Query dashboards |
-| **4** | Continuous | Near-real-time control monitoring, drift detection, audit evidence always-ready. | + scheduled continuous control monitoring (CCM) |
+- **`scripts/powershell/GrcToolkit.psm1`** — reusable PowerShell module: register I/O, logging, SHA-256 hashing, date helpers, Outlook notifications, evidence capture.
+- **`scripts/python/grclib.py`** — Python helpers: register load/save, date math, ref splitting, hashing, logging, banding.
+- **`scripts/powershell/Invoke-GrcDailyRun.ps1`** — master orchestrator that runs the recurring jobs in one scheduled pass.
 
-This toolkit gets a Level 0–1 team reliably to **Level 3**, with a clear on-ramp to Level 4.
+---
+
+## The GRC pillars (docs/)
+
+Each `docs/` file follows the same structure: **what to automate → data model → copy-paste code → scheduling/ownership → maturity ladder.**
+
+**Foundations & core**
+- `01-folder-governance.md` — taxonomy, naming, versioning, drift detection
+- `02-policy-management.md` — policy lifecycle, attestations, coverage
+- `03-risk-management.md` — register, scoring, heatmaps, treatment
+- `04-control-testing.md` — control library, reminders, continuous control monitoring
+- `05-evidence-collection.md` — automated evidence harvesting + hashed manifests
+- `06-access-reviews.md` — UARs and joiner/mover/leaver
+- `07-vendor-risk.md` — third-party intake, scoring, cert expiry
+- `08-audit-readiness.md` — always-on audit binder, traceability, sampling
+- `09-implementation-roadmap.md` — 90-day rollout & RACI
+
+**Compliance & governance**
+- `10-compliance-obligations.md` — obligations register, compliance calendar
+- `11-framework-crosswalk.md` — map once, report against many frameworks
+- `21-metrics-management-review.md` — KRIs/KPIs, RAG dashboard, management-review pack
+
+**Operational GRC**
+- `12-incident-management.md` — incident register, SLA timers, breach clock
+- `13-business-continuity.md` — BIA, RTO/RPO, DR/BCP test scheduling
+- `14-change-management.md` — change governance & approval completeness
+- `15-issues-capa.md` — issues, exceptions/waivers, corrective actions (the hub)
+- `16-internal-audit.md` — audit universe, risk-based plan, sampling, findings
+
+**Technical risk & assurance**
+- `17-vulnerability-management.md` — scanner ingest, SLA tracking, patch compliance
+- `18-config-baseline.md` — baseline capture & configuration drift detection
+
+**Data, privacy & people**
+- `19-data-privacy.md` — RoPA, DPIA, DSAR clocks, retention
+- `20-people-awareness-sod.md` — training, phishing ingest, segregation-of-duties
 
 ---
 
@@ -59,79 +78,60 @@ This toolkit gets a Level 0–1 team reliably to **Level 3**, with a clear on-ra
 
 ```
 grc-automation-toolkit/
-├─ README.md                  ← you are here (master implementation guide)
-├─ docs/
-│  ├─ 01-folder-governance.md      Standard taxonomy, naming, versioning on shared drives/OneDrive
-│  ├─ 02-policy-management.md      Policy lifecycle automation & attestations
-│  ├─ 03-risk-management.md        Risk register, scoring, heatmaps, treatment tracking
-│  ├─ 04-control-testing.md        Control library, automated/assisted testing, CCM
-│  ├─ 05-evidence-collection.md    Automated evidence harvesting from Windows/AD/endpoints
-│  ├─ 06-access-reviews.md         User access reviews & joiner/mover/leaver automation
-│  ├─ 07-vendor-risk.md            Third-party/vendor risk intake & monitoring
-│  ├─ 08-audit-readiness.md        Always-on audit binder, traceability, sampling
-│  └─ 09-implementation-roadmap.md 90-day rollout plan & RACI
+├─ README.md                  ← master guide (this file)
+├─ docs/                      21 pillar guides (01–21)
 ├─ scripts/
-│  ├─ powershell/             Evidence collection, reminders, AD access exports, scheduling
-│  ├─ python/                 Register generators, scoring, report/dashboard builders
-│  └─ power-automate/         Power Automate Desktop flow descriptions (build instructions)
-└─ templates/
-   ├─ risk-register.csv
-   ├─ control-matrix.csv
-   ├─ policy-register.csv
-   ├─ asset-inventory.csv
-   └─ vendor-register.csv
+│  ├─ powershell/             GrcToolkit.psm1 + reminders, evidence, scheduling, orchestrator
+│  ├─ python/                 grclib.py + risk, traceability, UAR, metrics, issues, incidents, vulns, SoD
+│  └─ power-automate/         no-code PAD flow recipes
+└─ templates/                 register CSVs for every pillar (risk, control, policy, asset, vendor,
+                              obligations, crosswalk, incident, issue, exception, change, BIA,
+                              vuln, RoPA, DSAR, KRI, SoD rules, audit universe)
 ```
 
 ---
 
-## Quick start (30 minutes to first automation)
+## Maturity model
 
-1. **Clone / download** this repo to your GRC shared drive, e.g. `\\fileserver\GRC\toolkit\`.
-2. Read **`docs/01-folder-governance.md`** and stand up the standard folder taxonomy. This single step removes most of the chaos.
-3. Drop the CSV templates from `/templates` into your registers folder; open them in Excel and save as `.xlsx` master workbooks.
-4. Run your **first script** — the deadline reminder engine:
+| Level | Name | Characteristics |
+|-------|------|-----------------|
+| 0 | Manual | Ad-hoc files, deadlines missed |
+| 1 | Structured | Standard taxonomy, naming, master registers |
+| 2 | Assisted | Scripts generate registers, reminders, evidence auto-collected |
+| 3 | Integrated | Single source of truth, controls auto-tested, dashboards refresh, exceptions flagged |
+| 4 | Continuous | Near-real-time monitoring, drift detection, always-ready evidence |
+
+This toolkit takes a Level 0–1 team to **Level 3**, with a clear on-ramp to Level 4.
+
+---
+
+## Quick start
+
+1. Copy this repo to your GRC share, e.g. `\\fileserver\GRC\toolkit\`.
+2. Read `docs/01-folder-governance.md` and stand up the folder taxonomy.
+3. Copy the CSVs from `/templates` into `\\fileserver\GRC\registers\`.
+4. Preview the reminder engine:
    ```powershell
    pwsh ./scripts/powershell/Send-ComplianceReminders.ps1 -RegisterPath "\\fileserver\GRC\registers\control-matrix.csv" -WhatIf
    ```
-   Remove `-WhatIf` once the preview looks right.
-5. Schedule it with Task Scheduler (instructions in `docs/04-control-testing.md`).
-
-You now have automated compliance reminders running with zero ongoing effort. Everything else builds on this pattern.
+5. Schedule the master run with Task Scheduler (`Register-GrcTasks.ps1`).
 
 ---
 
-## How to read the rest of this toolkit
+## Security & governance of the automation itself
 
-Each `docs/` file follows the same structure so you can implement pillar by pillar:
-
-1. **What to automate** — the specific repetitive work in that pillar.
-2. **Data model** — the register/columns that act as the source of truth.
-3. **The automation** — concrete scripts/flows with copy-paste-ready code.
-4. **Scheduling & ownership** — who owns it and how it runs unattended.
-5. **Maturity ladder** — minimum viable vs. advanced.
-
-Work through them in numeric order for a greenfield rollout, or jump to the pillar that hurts most.
-
----
-
-## Security & governance notes for the automation itself
-
-Automation introduces its own risk — govern it:
-
-- **Least privilege:** run collection scripts under a dedicated service account with read-only rights wherever possible.
-- **Integrity:** keep scripts in this repo (version-controlled); never let people edit the "production" copy on the share directly.
-- **Evidence integrity:** write evidence to a **write-once** location and hash it (the evidence scripts generate SHA-256 manifests).
-- **Segregation of duties:** the person who runs control tests should not be the person who can edit the control library.
-- **No secrets in scripts:** use Windows Credential Manager / DPAPI, never hard-code passwords.
-
-> **Important:** This toolkit automates *collection, tracking, reporting, and reminders*. A human GRC professional must still **review, judge, and sign off**. Automation reduces toil; it does not replace accountability.
+- **Least privilege:** run under a dedicated service account (`svc-grc`), read-only where possible.
+- **No secrets in scripts:** use Windows Credential Manager / DPAPI / gMSA.
+- **Integrity:** scripts are version-controlled here; evidence is written write-once and SHA-256 hashed.
+- **Separation of duties:** the person running tests is not the one editing the control library.
+- **Report, don't act:** automation collects/tracks/notifies. Irreversible actions (deletion, deprovisioning, breach notification, risk acceptance, approvals) stay **human-approved**.
 
 ---
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Use it, fork it, adapt it for your organization.
+MIT — see [LICENSE](LICENSE).
 
 ## Contributing
 
-Issues and PRs welcome: new scripts, additional framework mappings (ISO 27001, NIST CSF, SOC 2, PCI DSS), and connectors for on-prem systems.
+Issues and PRs welcome: new scripts, additional framework mappings, and connectors for on-prem systems.
