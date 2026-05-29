@@ -115,14 +115,39 @@ This toolkit takes a Level 0–1 team to **Level 3**, with a clear on-ramp to Le
 
 ## Quick start
 
-1. Copy this repo to your GRC share, e.g. `\\fileserver\GRC\toolkit\`.
-2. Read `docs/01-folder-governance.md` and stand up the folder taxonomy.
-3. Copy the CSVs from `/templates` into `\\fileserver\GRC\registers\`.
-4. Preview the reminder engine:
+### Try it in 2 minutes (with the included sample data)
+
+No environment setup needed - the `templates/` folder ships with realistic sample CSVs so you can see real output immediately.
+
+```bash
+# 1. Install Python deps (one-time)
+python -m venv .venv && .venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+
+# 2. Run the risk engine against the bundled sample register
+cd scripts/python
+python risk_engine.py ../../templates/risk-register.csv
+#   -> writes risk-register-scored.csv + risk-heatmap.png and prints the band counts
+
+# 3. Run the vulnerability SLA report against the bundled sample register
+copy ..\..\templates\vuln-register.csv vuln-register.csv   # Windows (cp on macOS/Linux)
+python vuln_sla.py
+#   -> writes vuln-sla-report.csv and prints open-by-severity + breach count
+```
+
+That is a working GRC output (a scored risk heatmap and an SLA breach report) before you touch your real environment.
+
+### Roll it out for real
+
+1. Copy this repo to your GRC share, e.g. `\\fileserver\GRC\00_Admin\toolkit\`.
+2. Read `docs/01-folder-governance.md` and stand up the numbered folder taxonomy (`00_Admin`, `01_Policies`, `02_Risk`, ... `99_Archive`).
+3. Copy the CSVs from `/templates` into the matching folders (e.g. `risk-register.csv` -> `02_Risk\`, `control-matrix.csv` -> `03_Controls\`).
+4. Open each script you plan to use, press `Ctrl+F`, search for `CHANGE_ME`, and replace every `<<CHANGE_ME: ...>>` token with your real value (full walkthrough: `DIY-GUIDE.md`; convention: `CONVENTIONS.md`).
+5. Preview the reminder engine safely with `-WhatIf`:
    ```powershell
-   pwsh ./scripts/powershell/Send-ComplianceReminders.ps1 -RegisterPath "\\fileserver\GRC\registers\control-matrix.csv" -WhatIf
+   pwsh ./scripts/powershell/Send-ComplianceReminders.ps1 -RegisterPath "\\fileserver\GRC\03_Controls\control-matrix.csv" -WhatIf
    ```
-5. Schedule the master run with Task Scheduler (`Register-GrcTasks.ps1`).
+6. Schedule the master run with Task Scheduler (`Register-GrcTasks.ps1`).
 
 ---
 
