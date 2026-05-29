@@ -77,7 +77,7 @@ print(affected[["RiskID","Title","ResidualScore"]])
 ## 5. Scheduling & ownership
 
 - **Owner:** Risk Manager.
-- Run `risk_engine.py` **nightly/weekly** (writes scored CSV + heatmap to `registers`).
+- Run `risk_engine.py` **nightly/weekly** (writes scored CSV + heatmap to `00_Admin\reports`).
 - Run overdue/aging checks **weekly**, email owners.
 
 ## 6. Maturity ladder
