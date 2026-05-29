@@ -16,7 +16,7 @@ Requires: pandas, grclib
 """
 import os
 import pandas as pd
-from grclib import load_register, days_left
+from grclib import load_register, days_left, require_columns
 
 # ============================================================================
 # vvv                          CHANGE ME                                  vvv
@@ -38,6 +38,7 @@ if REGISTER_DIR and REGISTER_DIR != "." and "CHANGE_ME" not in REGISTER_DIR:
 
 def aging():
     iss = load_register("issue-register.csv")
+    require_columns(iss, ["Status", "DueDate"], "issue register")
     rows = []
     for _, i in iss.iterrows():
         if i.Status == "Closed":
