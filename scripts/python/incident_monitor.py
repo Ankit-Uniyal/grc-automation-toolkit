@@ -16,7 +16,7 @@ Requires: pandas, grclib
 import os
 import pandas as pd
 from datetime import datetime
-from grclib import load_register
+from grclib import load_register, require_columns
 
 # ============================================================================
 # vvv                          CHANGE ME                                  vvv
@@ -48,6 +48,7 @@ def hrs(a, b):
 
 def main():
     inc = load_register("incident-register.csv")
+    require_columns(inc, ["Status", "Severity", "DetectedAt"], "incident register")
     now = datetime.now()
     alerts = []
     for _, r in inc.iterrows():
