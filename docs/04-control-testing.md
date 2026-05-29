@@ -6,13 +6,13 @@
 
 ## 1. What to automate
 
-- **Test scheduling** — derive each control's next test date from its frequency.
-- **Reminders & escalation** — notify owners/testers before and after due dates.
-- **Result capture** — standard intake so every test produces a comparable record.
-- **Automated tests (CCM)** — for technical controls that can be checked by script.
-- **Exception tracking** — log failures, link to risks, track remediation.
+- **Test scheduling** - derive each control's next test date from its frequency.
+- **Reminders & escalation** - notify owners/testers before and after due dates.
+- **Result capture** - standard intake so every test produces a comparable record.
+- **Automated tests (CCM)** - for technical controls that can be checked by script.
+- **Exception tracking** - log failures, link to risks, track remediation.
 
-## 2. Data model — `control-matrix.csv`
+## 2. Data model - `control-matrix.csv`
 
 | Column | Notes |
 |---|---|
@@ -31,12 +31,12 @@
 
 ## 3. The automation
 
-### 3a. The reminder engine — `Send-ComplianceReminders.ps1`
+### 3a. The reminder engine - `Send-ComplianceReminders.ps1`
 
 This is the toolkit's flagship script (referenced in the README quick start).
 
 > [!TIP]
-> **Script:** [`scripts/powershell/Send-ComplianceReminders.ps1`](../scripts/powershell/Send-ComplianceReminders.ps1) — reads the control matrix, finds controls whose `NextTestDate` is due/overdue, and emails the assigned tester (supports `-WhatIf` for a safe preview). Edit its `CHANGE ME` block, then run it.
+> **Script:** [`scripts/powershell/Send-ComplianceReminders.ps1`](../scripts/powershell/Send-ComplianceReminders.ps1) - reads the control matrix, finds controls whose `NextTestDate` is due/overdue, and emails the assigned tester (supports `-WhatIf` for a safe preview). Edit its `CHANGE ME` block, then run it.
 
 Run with `-WhatIf` first to preview who would be emailed.
 
@@ -51,7 +51,7 @@ Import-Csv $RegisterPath | ForEach-Object {
 } | Export-Csv $RegisterPath -NoTypeInformation
 ```
 
-### 3c. Continuous Control Monitoring — automated technical tests
+### 3c. Continuous Control Monitoring - automated technical tests
 
 Many technical controls can be **tested by script** instead of by interview. Examples that need no cloud:
 
@@ -90,9 +90,9 @@ When a test fails, append to `exceptions.csv` (ExceptionID, ControlID, Detected,
 ## 4. Scheduling unattended runs (Windows Task Scheduler)
 
 > [!TIP]
-> **Script:** [`scripts/powershell/Register-GrcTasks.ps1`](../scripts/powershell/Register-GrcTasks.ps1) — registers the recurring jobs in Windows Task Scheduler under a least-privilege service account. Run once, as administrator, after editing its `CHANGE ME` block.
+> **Script:** [`scripts/powershell/Register-GrcTasks.ps1`](../scripts/powershell/Register-GrcTasks.ps1) - registers the recurring jobs in Windows Task Scheduler under a least-privilege service account. Run once, as administrator, after editing its `CHANGE ME` block.
 
-> Run scripts under a **dedicated least-privilege service account** (`svc-grc`). Store its credential with DPAPI / Credential Manager — never in the script.
+> Run scripts under a **dedicated least-privilege service account** (`svc-grc`). Store its credential with DPAPI / Credential Manager - never in the script.
 
 ## 5. Scheduling & ownership
 
