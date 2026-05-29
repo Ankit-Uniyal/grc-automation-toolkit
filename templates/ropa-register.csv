@@ -1,0 +1,5 @@
+ActivityID,Activity,Controller,LawfulBasis,DataCategories,DataSubjects,Recipients,StorageLocation,RetentionMonths,CrossBorderTransfer,DPIARequired
+RPA-014,Payroll processing,Company,Contract,Identity;Financial,Employees,VEN-001,AST-002,84,No,No
+RPA-015,Recruitment,Company,Legitimate interest,Identity;CV data,Candidates,,AST-001,12,No,Yes
+RPA-016,CCTV monitoring,Company,Legitimate interest,Images,Staff;Visitors,,AST-006,3,No,Yes
+RPA-017,Customer support,Company,Contract,Identity;Contact,Customers,VEN-002,AST-003,36,Yes,No
