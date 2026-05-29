@@ -6,11 +6,11 @@
 
 ## 1. What to automate
 
-- **RoPA / data inventory** — processing activities, lawful basis, data categories, locations, transfers.
-- **DPIA workflow** — screening, tracking, and review of impact assessments.
-- **DSAR tracking** — statutory deadline countdown (e.g. ~30-day windows under several regimes).
-- **Retention enforcement** — flag data past its retention period for review.
-- **Data-flow / transfer mapping** — where personal data lives and moves.
+- **RoPA / data inventory** - processing activities, lawful basis, data categories, locations, transfers.
+- **DPIA workflow** - screening, tracking, and review of impact assessments.
+- **DSAR tracking** - statutory deadline countdown (e.g. ~30-day windows under several regimes).
+- **Retention enforcement** - flag data past its retention period for review.
+- **Data-flow / transfer mapping** - where personal data lives and moves.
 
 ## 2. Data models
 
@@ -88,7 +88,7 @@ print(ropa[["ActivityID","Activity","RetentionMonths","StorageLocation"]].to_str
 
 ### 3c. DPIA screening & tracking
 
-Maintain `dpia-register.csv` (DPIAID, ActivityID, ScreeningOutcome, Status, Reviewer, ReviewDate, NextReview). Auto-flag RoPA activities where `DPIARequired=Yes` but no DPIA exists — a compliance gap.
+Maintain `dpia-register.csv` (DPIAID, ActivityID, ScreeningOutcome, Status, Reviewer, ReviewDate, NextReview). Auto-flag RoPA activities where `DPIARequired=Yes` but no DPIA exists - a compliance gap.
 
 ```python
 ropa = load_register("ropa-register.csv")
@@ -100,8 +100,8 @@ print("Activities needing a DPIA:\n", missing[["ActivityID","Activity"]].to_stri
 
 ## 4. Important guardrails
 
-- Retention enforcement and DSAR **erasure** involve deletion — the toolkit **identifies candidates and tracks deadlines**, but the actual deletion is a human-approved action under your process.
-- Never store the contents of DSAR responses (which contain personal data) in this register — keep only metadata and a link to the securely-stored response.
+- Retention enforcement and DSAR **erasure** involve deletion - the toolkit **identifies candidates and tracks deadlines**, but the actual deletion is a human-approved action under your process.
+- Never store the contents of DSAR responses (which contain personal data) in this register - keep only metadata and a link to the securely-stored response.
 
 ## 5. Scheduling & ownership
 
