@@ -2,16 +2,38 @@
 issue_tracker.py - Issue/CAPA aging + exception expiry monitor.
 
 Produces:
-    issue-aging.csv       open issues with state (OVERDUE / ESCALATE / On track)
-    exception-expiry.csv  active exceptions expiring within 30 days or expired
+  issue-aging.csv       open issues with state (OVERDUE / ESCALATE / On track)
+  exception-expiry.csv  active exceptions expiring within 30 days or expired
 
-Usage:  python issue_tracker.py
+>>> BEFORE YOU RUN: edit the values in the CHANGE ME block below. <<<
+Search this file for CHANGE_ME. See CONVENTIONS.md and DIY-GUIDE.md (task B9).
+
+Governance rule: this only AGES and FLAGS items. It never closes an issue or
+approves an exception - those stay human decisions.
+
+Usage: python issue_tracker.py
 Requires: pandas, grclib
 """
+import os
 import pandas as pd
 from grclib import load_register, days_left
 
-ESCALATE_DAYS = {"Critical": 0, "High": 0, "Medium": 7, "Low": 14}
+# ============================================================================
+# vvv                          CHANGE ME                                  vvv
+# Folder that holds your live register CSVs. Replace the token (keep quotes).
+# Leave as "." if you run this from inside your registers folder.
+# ----------------------------------------------------------------------------
+
+REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\registers>>"   # CHANGE ME
+
+# Days-left threshold at which an open issue is escalated, per severity:
+ESCALATE_DAYS = {"Critical": 0, "High": 0, "Medium": 7, "Low": 14}   # CHANGE ME (optional)
+
+# ^^^                          CHANGE ME                                  ^^^
+# ============================================================================
+
+if REGISTER_DIR and REGISTER_DIR != "." and "CHANGE_ME" not in REGISTER_DIR:
+    os.chdir(REGISTER_DIR)
 
 
 def aging():
