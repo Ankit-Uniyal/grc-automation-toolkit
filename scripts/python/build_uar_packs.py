@@ -32,7 +32,7 @@ import pandas as pd
 # (keep quotes), or leave as "packs" to create a packs\ folder in the cwd.
 # ----------------------------------------------------------------------------
 
-OUTPUT_DIR = r"<<CHANGE_ME: \\fileserver\GRC\reports\uar-packs>>"   # CHANGE ME
+OUTPUT_DIR = r"<<CHANGE_ME: \\fileserver\GRC\00_Admin\reports\uar-packs>>"   # CHANGE ME
 
 # ^^^                          CHANGE ME                                  ^^^
 # ============================================================================
