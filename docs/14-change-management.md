@@ -1,18 +1,18 @@
 # 14 · Change Management Governance
 
-> **Pillar:** Operational control. Auditors routinely test that significant changes were assessed, approved, and reviewed. This pillar automates the change register, approval-completeness checks, and emergency-change reconciliation — without a ticketing platform.
+> **Pillar:** Operational control. Auditors routinely test that significant changes were assessed, approved, and reviewed. This pillar automates the change register, approval-completeness checks, and emergency-change reconciliation - without a ticketing platform.
 
 ---
 
 ## 1. What to automate
 
-- **Change register** — record of changes with risk, approval, and outcome.
-- **Approval-completeness checks** — flag changes missing required approvals.
-- **Emergency change reconciliation** — ensure post-hoc reviews happened.
-- **Unauthorized change detection** — reconcile a change log against system/config drift evidence.
-- **Metrics** — change success rate, emergency-change ratio, failed-change trend.
+- **Change register** - record of changes with risk, approval, and outcome.
+- **Approval-completeness checks** - flag changes missing required approvals.
+- **Emergency change reconciliation** - ensure post-hoc reviews happened.
+- **Unauthorized change detection** - reconcile a change log against system/config drift evidence.
+- **Metrics** - change success rate, emergency-change ratio, failed-change trend.
 
-## 2. Data model — `change-register.csv`
+## 2. Data model - `change-register.csv`
 
 | Column | Notes |
 |---|---|
@@ -71,7 +71,7 @@ print("Failed/rolled back:", int(chg.Outcome.isin(["Failed", "Rolled back"]).sum
 
 ### 3c. Unauthorized change detection
 
-Cross-reference implemented changes against your configuration-drift evidence (`docs/18`). Drift with **no matching ChangeID** is a potential unauthorized change — surface it for investigation.
+Cross-reference implemented changes against your configuration-drift evidence (`docs/18`). Drift with **no matching ChangeID** is a potential unauthorized change - surface it for investigation.
 
 ## 4. Scheduling & ownership
 
