@@ -1,0 +1,33 @@
+{
+  "_comment": "Open this repo folder in VS Code with the TODO Highlight extension (Gruntfuggly.todo-highlight) installed. Every CHANGE_ME / CHANGE ME token will render in bright orange so you cannot miss the values you must edit before running a script.",
+  "todohighlight.isEnable": true,
+  "todohighlight.isCaseSensitive": false,
+  "todohighlight.keywords": [
+    {
+      "text": "CHANGE_ME",
+      "color": "#ffffff",
+      "backgroundColor": "#ff6a00",
+      "overviewRulerColor": "#ff6a00"
+    },
+    {
+      "text": "CHANGE ME",
+      "color": "#ffffff",
+      "backgroundColor": "#ff6a00",
+      "overviewRulerColor": "#ff6a00"
+    },
+    {
+      "text": "<<",
+      "color": "#000000",
+      "backgroundColor": "#ffd23f"
+    },
+    {
+      "text": ">>",
+      "color": "#000000",
+      "backgroundColor": "#ffd23f"
+    }
+  ],
+  "todohighlight.defaultStyle": {
+    "color": "#ffffff",
+    "backgroundColor": "#ff6a00"
+  }
+}
