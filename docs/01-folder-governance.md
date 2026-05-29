@@ -11,8 +11,8 @@ In a non-cloud shop, your shared drive / OneDrive / SharePoint library **is** yo
 - Enforcing a **standard folder taxonomy** across the GRC area.
 - Enforcing a **file-naming convention** so scripts can parse metadata from names.
 - **Versioning & retention** (keep history, archive the old, purge nothing without approval).
-- **Detecting drift** — rogue folders, misnamed files, stale documents, duplicates.
-- **Permissions hygiene** — who can read/write each area.
+- **Detecting drift** - rogue folders, misnamed files, stale documents, duplicates.
+- **Permissions hygiene** - who can read/write each area.
 
 ## 2. The standard taxonomy
 
@@ -98,8 +98,8 @@ Get-ChildItem "\\fileserver\GRC\04_Evidence" -Recurse -File |
 
 ## 5. Versioning & retention
 
-- **OneDrive/SharePoint:** turn on **version history** in library settings — it is free and gives you rollback + audit trail. Set major+minor versioning for the `01_Policies` library.
-- **Plain file server:** keep `/drafts` and `/archive` subfolders; the naming convention's version token preserves lineage. Move superseded files to `99_Archive` (never delete) — automate the move but **require human approval** before purges.
+- **OneDrive/SharePoint:** turn on **version history** in library settings - it is free and gives you rollback + audit trail. Set major+minor versioning for the `01_Policies` library.
+- **Plain file server:** keep `/drafts` and `/archive` subfolders; the naming convention's version token preserves lineage. Move superseded files to `99_Archive` (never delete) - automate the move but **require human approval** before purges.
 - Document a **retention schedule** in `00_Admin` (e.g. evidence retained 7 years, drafts 1 year).
 
 ## 6. Permissions hygiene
@@ -110,7 +110,7 @@ Get-ChildItem "\\fileserver\GRC\04_Evidence" -Recurse -File |
   (Get-Acl "\\fileserver\GRC\04_Evidence").Access |
     Select IdentityReference, FileSystemRights, AccessControlType
   ```
-- **Note:** *changing* permissions is a governance decision — make the change yourself through your IT process; scripts here only **report** on permissions.
+- **Note:** *changing* permissions is a governance decision - make the change yourself through your IT process; scripts here only **report** on permissions.
 
 ## 7. Scheduling & ownership
 
