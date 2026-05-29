@@ -1,18 +1,18 @@
 # 02 · Policy Management Automation
 
-> **Pillar:** Governance. Policies are the backbone of GRC. The pain is never writing them once — it is the **lifecycle**: reviews falling overdue, staff not attesting, and no one able to prove who-read-what.
+> **Pillar:** Governance. Policies are the backbone of GRC. The pain is never writing them once - it is the **lifecycle**: reviews falling overdue, staff not attesting, and no one able to prove who-read-what.
 
 ---
 
 ## 1. What to automate
 
-- **Review-cycle tracking** — flag policies due/overdue for review.
-- **Approval workflow** — route drafts for sign-off and record the decision.
-- **Attestation campaigns** — send "read & acknowledge" requests and chase non-responders.
-- **Coverage mapping** — link each policy to the framework clauses it satisfies (ISO 27001, NIST CSF, SOC 2).
-- **Publication** — push approved policies to the read-only staff library.
+- **Review-cycle tracking** - flag policies due/overdue for review.
+- **Approval workflow** - route drafts for sign-off and record the decision.
+- **Attestation campaigns** - send "read & acknowledge" requests and chase non-responders.
+- **Coverage mapping** - link each policy to the framework clauses it satisfies (ISO 27001, NIST CSF, SOC 2).
+- **Publication** - push approved policies to the read-only staff library.
 
-## 2. Data model — `policy-register.csv`
+## 2. Data model - `policy-register.csv`
 
 | Column | Example |
 |---|---|
@@ -78,7 +78,7 @@ foreach ($r in $Recipients) {
 
 Track responses by reading the GRC mailbox folder and writing acknowledgements to an `attestations.csv` (one row per employee per policy version). Chase anyone missing after N days with the same script filtered to non-responders.
 
-### 3d. No-code alternative — Power Automate Desktop
+### 3d. No-code alternative - Power Automate Desktop
 
 If scripting Outlook is off-limits, build a PAD flow:
 1. **Read from Excel** → loop the policy register.
