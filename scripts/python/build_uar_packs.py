@@ -10,7 +10,7 @@ the OUTPUT_DIR in the CHANGE ME block.
 Governance rule: this only PREPARES review packs and lists changes. It never
 grants or revokes access - managers decide and IT applies the change manually.
 
-Inputs (export from Active Directory with Export-AccessSnapshot.ps1):
+Inputs (export from Active Directory; see the inline AD-export example in docs/06-access-reviews.md):
   users_<date>.csv               SamAccountName, Name, Department, Title, Manager, LastLogonDate
   group_membership_<date>.csv    Group, Member
 Outputs:
