@@ -1,12 +1,12 @@
 # 09 · Implementation Roadmap (90-Day Rollout)
 
-> **Pillar:** Program execution. A toolkit only delivers value if it is actually rolled out. This is a pragmatic 90-day plan to take a Level 0–1 "shared folder" GRC operation to Level 3 automation, plus the operating model to keep it running.
+> **Pillar:** Program execution. A toolkit only delivers value if it is actually rolled out. This is a pragmatic 90-day plan to take a Level 0-1 "shared folder" GRC operation to Level 3 automation, plus the operating model to keep it running.
 
 ---
 
 ## Guiding principles
 
-1. **Stabilize before you automate.** Fix the folder/naming chaos first (pillar 01) — automation on top of chaos just creates fast chaos.
+1. **Stabilize before you automate.** Fix the folder/naming chaos first (pillar 01) - automation on top of chaos just creates fast chaos.
 2. **One source of truth per pillar.** Each register CSV/XLSX is authoritative; scripts read and write only it.
 3. **Automate the toil, keep the judgment.** Reminders, collection, scoring, reconciliation = automate. Approvals, risk acceptance, deprovisioning = human.
 4. **Least privilege & version control for the automation itself.** Run under `svc-grc`; keep scripts in this repo, not editable on the share.
@@ -14,7 +14,7 @@
 
 ---
 
-## Phase 1 — Foundation (Days 1–30)
+## Phase 1 - Foundation (Days 1-30)
 
 **Goal: structured, predictable storage + first automation live.**
 
@@ -27,7 +27,7 @@
 
 **Exit criteria:** every GRC file follows the convention; reminders fire weekly with no manual effort.
 
-## Phase 2 — Core automation (Days 31–60)
+## Phase 2 - Core automation (Days 31-60)
 
 **Goal: registers become live, data-driven systems.**
 
@@ -40,7 +40,7 @@
 
 **Exit criteria:** scoring, evidence, and access data refresh on schedule; dashboards regenerate themselves.
 
-## Phase 3 — Integrate & assure (Days 61–90)
+## Phase 3 - Integrate & assure (Days 61-90)
 
 **Goal: single, audit-ready picture; continuous monitoring.**
 
@@ -67,7 +67,7 @@
 | Access reviews | IAM/IT Security | CISO | Line managers | GRC |
 | Vendor risk | Vendor Manager | Procurement Lead | GRC | Owners |
 | Audit readiness | GRC Manager | CISO | Internal Audit | ExCo |
-| Automation maintenance | GRC Analyst (scripts) | GRC Manager | IT | — |
+| Automation maintenance | GRC Analyst (scripts) | GRC Manager | IT | - |
 
 ## Schedule-at-a-glance
 
@@ -90,9 +90,9 @@
 
 - Automating on an unstructured share (do pillar 01 first).
 - Hard-coding credentials or running as a domain admin.
-- Letting automation *act* (delete/deprovision) instead of *report* — keep irreversible actions human-approved.
-- No owner for the scripts — they rot. Assign maintenance explicitly (see RACI).
+- Letting automation *act* (delete/deprovision) instead of *report* - keep irreversible actions human-approved.
+- No owner for the scripts - they rot. Assign maintenance explicitly (see RACI).
 
 ---
 
-**You're done.** Work back through `docs/01`–`08` to implement each pillar, and use the `scripts/` and `templates/` folders as your starting code and data models.
+**You're done.** Work back through `docs/01`-`08` to implement each pillar, and use the `scripts/` and `templates/` folders as your starting code and data models.
