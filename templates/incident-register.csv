@@ -1,0 +1,4 @@
+IncidentID,Title,Severity,DetectedAt,AcknowledgedAt,ContainedAt,ResolvedAt,Reportable,BreachClockStart,NotificationDeadlineHours,Status,Owner,LinkedIssueID
+INC-2026-014,Phishing - credential compromise,Critical,2026-05-20T09:15,2026-05-20T09:40,2026-05-20T11:00,,Yes,2026-05-20T11:00,72,Contained,IR Lead,ISS-031
+INC-2026-015,Lost laptop (encrypted),Medium,2026-05-22T14:00,2026-05-22T14:30,2026-05-22T15:00,2026-05-23T09:00,No,,72,Resolved,IT Manager,
+INC-2026-016,Malware on workstation,High,2026-05-25T08:05,2026-05-25T08:20,2026-05-25T10:00,,No,,72,Contained,SecOps,ISS-033
