@@ -1,4 +1,4 @@
-# DIY Guide — Do It Yourself, Step by Step
+# DIY Guide - Do It Yourself, Step by Step
 
 > [!IMPORTANT]
 > This is the **hand-holding guide**. It assumes **no prior scripting experience**.
@@ -10,22 +10,22 @@
 
 Every task below uses the **same 6-part recipe** so it always feels familiar:
 
-1. **Outcome** — what you will have when you finish.
-2. **You need** — files/access to have ready first.
-3. **Do this** — the granular, click-by-click / command-by-command steps.
-4. **Values to change** — the exact `CHANGE_ME` tokens for this task.
-5. **Verify** — how to confirm it worked.
-6. **Schedule (optional)** — make it run by itself.
+1. **Outcome** - what you will have when you finish.
+2. **You need** - files/access to have ready first.
+3. **Do this** - the granular, click-by-click / command-by-command steps.
+4. **Values to change** - the exact `CHANGE_ME` tokens for this task.
+5. **Verify** - how to confirm it worked.
+6. **Schedule (optional)** - make it run by itself.
 
 > [!TIP]
-> Read **[Part A — One-Time Setup](#part-a--one-time-setup)** once. Then jump straight to whichever
-> task you need in **[Part B — Task Recipes](#part-b--task-recipes)**.
+> Read **[Part A - One-Time Setup](#part-a--one-time-setup)** once. Then jump straight to whichever
+> task you need in **[Part B - Task Recipes](#part-b--task-recipes)**.
 
 ---
 
 ## Table of contents
 
-- [Part A — One-Time Setup](#part-a--one-time-setup)
+- [Part A - One-Time Setup](#part-a--one-time-setup)
   - [A1. Install the tools](#a1-install-the-tools)
   - [A2. Download this toolkit to your PC](#a2-download-this-toolkit-to-your-pc)
   - [A3. Pick your folder layout (system of record)](#a3-pick-your-folder-layout-system-of-record)
@@ -33,7 +33,7 @@ Every task below uses the **same 6-part recipe** so it always feels familiar:
   - [A5. Store secrets safely (no passwords in scripts)](#a5-store-secrets-safely-no-passwords-in-scripts)
   - [A6. Allow PowerShell scripts to run](#a6-allow-powershell-scripts-to-run)
   - [A7. Test Python](#a7-test-python)
-- [Part B — Task Recipes](#part-b--task-recipes)
+- [Part B - Task Recipes](#part-b--task-recipes)
   - [B1. Send policy review reminders](#b1-send-policy-review-reminders)
   - [B2. Calculate & refresh the risk register](#b2-calculate--refresh-the-risk-register)
   - [B3. Collect evidence automatically](#b3-collect-evidence-automatically)
@@ -46,12 +46,12 @@ Every task below uses the **same 6-part recipe** so it always feels familiar:
   - [B10. Build the framework crosswalk / obligations coverage](#b10-build-the-framework-crosswalk--obligations-coverage)
   - [B11. Produce the metrics / management-review pack](#b11-produce-the-metrics--management-review-pack)
   - [B12. Run everything daily (the orchestrator)](#b12-run-everything-daily-the-orchestrator)
-- [Part C — Build the Excel dashboard](#part-c--build-the-excel-dashboard)
-- [Part D — Troubleshooting](#part-d--troubleshooting)
+- [Part C - Build the Excel dashboard](#part-c--build-the-excel-dashboard)
+- [Part D - Troubleshooting](#part-d--troubleshooting)
 
 ---
 
-# Part A — One-Time Setup
+# Part A - One-Time Setup
 
 > [!NOTE]
 > You only do Part A once per machine (the PC or server that will run the automation).
@@ -60,21 +60,21 @@ Every task below uses the **same 6-part recipe** so it always feels familiar:
 
 Everything here is free and runs on a normal Windows PC. Nothing here uses the cloud.
 
-1. **PowerShell** — already on Windows. Check the version: open **Start menu → type `PowerShell` → Enter**, then run:
+1. **PowerShell** - already on Windows. Check the version: open **Start menu → type `PowerShell` → Enter**, then run:
    ```powershell
    $PSVersionTable.PSVersion
    ```
    You need **5.1 or higher** (any modern Windows has this). PowerShell 7 is nicer but optional.
-2. **Python** — go to <https://www.python.org/downloads/> → click **Download Python 3.11+** → run the installer.
+2. **Python** - go to <https://www.python.org/downloads/> → click **Download Python 3.11+** → run the installer.
    > [!IMPORTANT]
    > On the first installer screen, **tick the box** that says **"Add python.exe to PATH"**, then click *Install Now*.
-3. **Python libraries** — open PowerShell and run:
+3. **Python libraries** - open PowerShell and run:
    ```powershell
    pip install pandas openpyxl
    ```
-4. **Excel** — you already have it (part of Microsoft Office). Power Query is built in.
-5. **Power Automate Desktop** (optional, for screen automation) — free from Microsoft Store; install only if you need the PAD flows.
-6. **VS Code** (optional but recommended for editing scripts with coloured `CHANGE_ME` tokens) — <https://code.visualstudio.com/>.
+4. **Excel** - you already have it (part of Microsoft Office). Power Query is built in.
+5. **Power Automate Desktop** (optional, for screen automation) - free from Microsoft Store; install only if you need the PAD flows.
+6. **VS Code** (optional but recommended for editing scripts with coloured `CHANGE_ME` tokens) - <https://code.visualstudio.com/>.
 
 ## A2. Download this toolkit to your PC
 
@@ -108,7 +108,7 @@ Create this structure once (change the root to match your environment):
 
 1. Create the folders above on your shared drive.
 2. Copy each CSV from the toolkit's **`templates\`** folder into its matching folder (e.g. `risk-register.csv` -> `02_Risk\`, `control-matrix.csv` -> `03_Controls\`, the rest -> `00_Admin\registers\`).
-3. These copied CSVs are now your **live registers** — you will maintain these, not the templates.
+3. These copied CSVs are now your **live registers** - you will maintain these, not the templates.
 
 > [!TIP]
 > Keep your register folders backed up / versioned. It is your real GRC data.
@@ -155,14 +155,14 @@ If both print without errors, you are ready.
 
 ---
 
-# Part B — Task Recipes
+# Part B - Task Recipes
 
 > Each recipe is self-contained. The scripts live in `scripts\`. Edit the `CHANGE_ME` values at the
 > top of each script (search `Ctrl+F` for `CHANGE_ME`) **before** running.
 
 ## B1. Send policy review reminders
 
-**1. Outcome:** Owners of policies due for review automatically get an email reminder; nothing is changed for them — they just get nudged.
+**1. Outcome:** Owners of policies due for review automatically get an email reminder; nothing is changed for them - they just get nudged.
 
 **2. You need:** `00_Admin\registers\policy-register.csv` filled in (Policy, Owner, OwnerEmail, NextReviewDate).
 
@@ -202,7 +202,7 @@ If both print without errors, you are ready.
 
 **4. Values to change:** `RISK_REGISTER_PATH`, `OUTPUT_PATH`, and (optional) the scoring thresholds.
 
-**5. Verify:** Open the output CSV — the `ResidualScore` and `RiskLevel` columns are now populated.
+**5. Verify:** Open the output CSV - the `ResidualScore` and `RiskLevel` columns are now populated.
 
 **6. Schedule:** add to the daily orchestrator (B12).
 
@@ -282,10 +282,10 @@ If both print without errors, you are ready.
 
 **4. Values to change:** register path, SLA hours per severity.
 
-**5. Verify:** open the output — breached/at-risk incidents are flagged.
+**5. Verify:** open the output - breached/at-risk incidents are flagged.
 
 > [!WARNING]
-> The script flags SLA breaches. It never sends external/breach notifications — that decision stays with a human.
+> The script flags SLA breaches. It never sends external/breach notifications - that decision stays with a human.
 
 ## B8. Track vulnerabilities against SLAs
 
@@ -358,9 +358,9 @@ If both print without errors, you are ready.
 
 ---
 
-# Part C — Build the Excel dashboard
+# Part C - Build the Excel dashboard
 
-**Outcome:** A self-refreshing Excel dashboard that reads the generated metrics CSV — no manual charting.
+**Outcome:** A self-refreshing Excel dashboard that reads the generated metrics CSV - no manual charting.
 
 1. Open a new Excel workbook.
 2. **Data → Get Data → From Text/CSV** → choose `reports\grc-metrics-history.csv`.
@@ -376,7 +376,7 @@ See [`templates/dashboards/README.md`](templates/dashboards/README.md) for the d
 
 ---
 
-# Part D — Troubleshooting
+# Part D - Troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---------|--------------|-----|
@@ -385,8 +385,8 @@ See [`templates/dashboards/README.md`](templates/dashboards/README.md) for the d
 | `No module named pandas` | Library missing | Run `pip install pandas openpyxl`. |
 | Email not sent | Wrong SMTP / auth | Re-check `$SmtpServer`, `$FromAddress`, and the stored credential (A5). |
 | `Could not find file ...` | Wrong path in a `CHANGE_ME` slot | Open the script, fix the path token, save. |
-| Script changed data I didn't expect | — | Stop. These scripts only report/collect/notify. Re-check you ran the right file. |
+| Script changed data I didn't expect | - | Stop. These scripts only report/collect/notify. Re-check you ran the right file. |
 
 > [!TIP]
-> Still stuck? Open the matching pillar guide in **[docs/](docs/)** — each one explains the concept
+> Still stuck? Open the matching pillar guide in **[docs/](docs/)** - each one explains the concept
 > behind its script in plain language.
