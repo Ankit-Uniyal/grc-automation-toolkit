@@ -1,16 +1,16 @@
 # 08 · Audit Readiness (Always-On Audit Binder)
 
-> **Pillar:** Assurance & traceability. Audits become painful only when evidence and traceability are assembled reactively. If the previous pillars run on schedule, the audit binder is **already built** — this pillar is about wiring them together so you are perpetually audit-ready.
+> **Pillar:** Assurance & traceability. Audits become painful only when evidence and traceability are assembled reactively. If the previous pillars run on schedule, the audit binder is **already built** - this pillar is about wiring them together so you are perpetually audit-ready.
 
 ---
 
 ## 1. What to automate
 
-- **Traceability matrix** — framework clause → control → policy → evidence, generated automatically.
-- **Audit binder assembly** — collate current-period evidence per control into one structured pack.
-- **Sampling** — pick random, reproducible samples for the auditor.
-- **Gap & freshness reporting** — what is missing or stale before the auditor arrives.
-- **PBC (Provided-By-Client) list tracking** — manage auditor requests and responses.
+- **Traceability matrix** - framework clause → control → policy → evidence, generated automatically.
+- **Audit binder assembly** - collate current-period evidence per control into one structured pack.
+- **Sampling** - pick random, reproducible samples for the auditor.
+- **Gap & freshness reporting** - what is missing or stale before the auditor arrives.
+- **PBC (Provided-By-Client) list tracking** - manage auditor requests and responses.
 
 ## 2. The master traceability matrix (Python)
 
@@ -95,7 +95,7 @@ foreach ($c in $controls) {
 
 ## 6. PBC (auditor request) tracker
 
-Maintain `pbc-list.csv` (RequestID, Description, Owner, DueDate, Status, ResponseLink). Reuse the overdue-chaser pattern from `docs/02` to keep responses on time during fieldwork — turning the usually-chaotic PBC scramble into a tracked workflow.
+Maintain `pbc-list.csv` (RequestID, Description, Owner, DueDate, Status, ResponseLink). Reuse the overdue-chaser pattern from `docs/02` to keep responses on time during fieldwork - turning the usually-chaotic PBC scramble into a tracked workflow.
 
 ## 7. Scheduling & ownership
 
