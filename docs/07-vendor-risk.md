@@ -1,18 +1,18 @@
 # 07 · Third-Party / Vendor Risk Automation
 
-> **Pillar:** Supply-chain risk. Vendor risk in a manual shop usually means a folder of half-finished questionnaires and certificates nobody tracks the expiry of. You can automate the intake, scoring, reminders, and expiry monitoring entirely with Excel/CSV + scripts — no GRC SaaS required.
+> **Pillar:** Supply-chain risk. Vendor risk in a manual shop usually means a folder of half-finished questionnaires and certificates nobody tracks the expiry of. You can automate the intake, scoring, reminders, and expiry monitoring entirely with Excel/CSV + scripts - no GRC SaaS required.
 
 ---
 
 ## 1. What to automate
 
-- **Intake & tiering** — classify each vendor by criticality/data sensitivity.
-- **Due-diligence tracking** — what was requested, received, and reviewed.
-- **Certificate/attestation expiry** — flag SOC 2 / ISO 27001 certs before they lapse.
-- **Reassessment cadence** — schedule periodic re-reviews by tier.
-- **Reminders** — chase vendors and internal owners.
+- **Intake & tiering** - classify each vendor by criticality/data sensitivity.
+- **Due-diligence tracking** - what was requested, received, and reviewed.
+- **Certificate/attestation expiry** - flag SOC 2 / ISO 27001 certs before they lapse.
+- **Reassessment cadence** - schedule periodic re-reviews by tier.
+- **Reminders** - chase vendors and internal owners.
 
-## 2. Data model — `vendor-register.csv`
+## 2. Data model - `vendor-register.csv`
 
 | Column | Notes |
 |---|---|
@@ -97,7 +97,7 @@ Feed the output of `Get-VendorAlerts.ps1` into the Outlook reminder pattern (`do
 
 ## 4. A note on automated external risk feeds
 
-Public breach databases, sanction lists, and security-rating feeds can enrich vendor risk — but most useful ones are cloud/API services. In a strictly non-cloud environment, keep this step **manual or periodic**: download any permitted public list and reconcile against your register with a simple join. Do not wire the toolkit to scrape third-party sites.
+Public breach databases, sanction lists, and security-rating feeds can enrich vendor risk - but most useful ones are cloud/API services. In a strictly non-cloud environment, keep this step **manual or periodic**: download any permitted public list and reconcile against your register with a simple join. Do not wire the toolkit to scrape third-party sites.
 
 ## 5. Scheduling & ownership
 
