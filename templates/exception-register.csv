@@ -1,0 +1,4 @@
+ExceptionID,ControlID,Reason,RiskAccepted,ApprovedBy,ApprovalDate,ExpiryDate,Status
+EXC-007,CTRL-BK-001,Restore test pending tooling upgrade,Temporary lower assurance on payroll recovery,CISO,2026-03-01,2026-09-01,Active
+EXC-008,CTRL-NW-001,Legacy host needs port open for app,Compensating segmentation in place,CISO,2026-02-10,2026-08-10,Active
+EXC-009,CTRL-AC-002,Service account cannot use MFA,Vaulted credential + monitoring,CISO,2026-01-15,2026-07-15,Active
