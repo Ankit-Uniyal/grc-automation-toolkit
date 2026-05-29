@@ -1,0 +1,5 @@
+IssueID,Source,SourceRef,Title,Severity,Owner,RootCause,ActionPlan,DueDate,Status,ClosedDate,LinkedRisk
+ISS-031,Incident,INC-2026-014,MFA not enforced on VPN,High,IT Manager,Config gap,Enforce MFA on all remote access,2026-06-30,In Progress,,RISK-001
+ISS-032,Control test,CTRL-BK-001,Payroll backups not restore-tested,Medium,IT Manager,No test schedule,Add quarterly restore test,2026-07-15,Open,,RISK-004
+ISS-033,Incident,INC-2026-016,Outdated AV signatures on 12 hosts,Medium,SecOps,Update service disabled,Re-enable and verify,2026-06-10,Open,,
+ISS-034,Audit,AUD-2026-1,Privileged access not reviewed quarterly,High,IT Security,Process not operationalized,Implement quarterly UAR,2026-06-20,Open,,RISK-003
