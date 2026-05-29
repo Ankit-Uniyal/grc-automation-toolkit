@@ -1,0 +1,7 @@
+AssetID,Name,Type,Owner,Location,Classification,Confidentiality,Integrity,Availability,LinkedControls,Status,LastReviewed
+AST-001,File Server FS01,Server,IT Manager,On-prem DC,Confidential,High,High,High,CTRL-AC-001;CTRL-BK-001,Active,2026-04-01
+AST-002,Payroll Application,Application,HR Manager,On-prem,Restricted,High,High,Medium,CTRL-AC-002;CTRL-VM-001,Active,2026-03-15
+AST-003,Active Directory,Service,IT Security,On-prem DC,Confidential,High,High,High,CTRL-AC-001;CTRL-AC-002,Active,2026-04-10
+AST-004,Staff Laptops (fleet),Endpoint,IT Manager,Distributed,Internal,Medium,Medium,Medium,CTRL-EP-001;CTRL-EP-002;CTRL-NW-001,Active,2026-04-01
+AST-005,Backup NAS,Storage,IT Manager,On-prem,Confidential,High,High,Medium,CTRL-BK-001,Active,2026-03-20
+AST-006,GRC Shared Drive,Data Store,GRC Manager,On-prem FS01,Confidential,High,High,Medium,CTRL-AC-001,Active,2026-04-01
