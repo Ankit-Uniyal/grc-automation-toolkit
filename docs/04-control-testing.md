@@ -35,30 +35,8 @@
 
 This is the toolkit's flagship script (referenced in the README quick start).
 
-```powershell
-# scripts/powershell/Send-ComplianceReminders.ps1
-[CmdletBinding(SupportsShouldProcess)]
-param(
-  [string]$RegisterPath = "\\fileserver\GRC\03_Controls\control-matrix.csv",
-  [int]$WarnDays = 14
-)
-$today = Get-Date
-$ol = New-Object -ComObject Outlook.Application
-Import-Csv $RegisterPath | ForEach-Object {
-  $next = [datetime]$_.NextTestDate
-  $days = ($next - $today).Days
-  if ($days -le $WarnDays) {
-    $state = if ($days -lt 0) { "OVERDUE by $([math]::Abs($days))d" } else { "due in $days d" }
-    $subject = "[GRC] Control $($_.ControlID) test $state"
-    if ($PSCmdlet.ShouldProcess($_.Tester, $subject)) {
-      $m = $ol.CreateItem(0); $m.To = $_.Tester
-      $m.Subject = $subject
-      $m.Body = "Control: $($_.Title)`nFrequency: $($_.Frequency)`nDue: $($_.NextTestDate)`nRecord results in the control matrix and file evidence."
-      $m.Send()
-    }
-  }
-}
-```
+> [!TIP]
+> **Script:** [`scripts/powershell/Send-ComplianceReminders.ps1`](../scripts/powershell/Send-ComplianceReminders.ps1) — reads the control matrix, finds controls whose `NextTestDate` is due/overdue, and emails the assigned tester (supports `-WhatIf` for a safe preview). Edit its `CHANGE ME` block, then run it.
 
 Run with `-WhatIf` first to preview who would be emailed.
 
@@ -111,15 +89,8 @@ When a test fails, append to `exceptions.csv` (ExceptionID, ControlID, Detected,
 
 ## 4. Scheduling unattended runs (Windows Task Scheduler)
 
-```powershell
-# scripts/powershell/Register-GrcTasks.ps1  (run once, as admin)
-$action  = New-ScheduledTaskAction -Execute 'pwsh.exe' `
-  -Argument '-File "\\fileserver\GRC\toolkit\scripts\powershell\Send-ComplianceReminders.ps1"'
-$trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 8am
-$principal = New-ScheduledTaskPrincipal -UserId 'DOMAIN\svc-grc' -LogonType Password -RunLevel Limited
-Register-ScheduledTask -TaskName 'GRC-Weekly-Reminders' `
-  -Action $action -Trigger $trigger -Principal $principal
-```
+> [!TIP]
+> **Script:** [`scripts/powershell/Register-GrcTasks.ps1`](../scripts/powershell/Register-GrcTasks.ps1) — registers the recurring jobs in Windows Task Scheduler under a least-privilege service account. Run once, as administrator, after editing its `CHANGE ME` block.
 
 > Run scripts under a **dedicated least-privilege service account** (`svc-grc`). Store its credential with DPAPI / Credential Manager — never in the script.
 
