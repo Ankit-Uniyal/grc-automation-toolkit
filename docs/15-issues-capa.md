@@ -1,15 +1,15 @@
 # 15 · Issues, Exceptions & Corrective Actions (CAPA)
 
-> **Pillar:** Closing the loop. Findings from audits, control failures, incidents, and risk assessments all generate *actions* — and those actions are where programs quietly fail. This pillar centralizes issues, exceptions/waivers, and corrective/preventive actions, then automates aging, escalation, and expiry.
+> **Pillar:** Closing the loop. Findings from audits, control failures, incidents, and risk assessments all generate *actions* - and those actions are where programs quietly fail. This pillar centralizes issues, exceptions/waivers, and corrective/preventive actions, then automates aging, escalation, and expiry.
 
 ---
 
 ## 1. What to automate
 
-- **Unified issue/finding register** — one place for findings from any source.
+- **Unified issue/finding register** - one place for findings from any source.
 - **Corrective & Preventive Action (CAPA)** tracking to closure.
-- **Exception/waiver lifecycle** — risk-accepted deviations with **mandatory expiry**.
-- **Aging & overdue escalation** — by severity and owner.
+- **Exception/waiver lifecycle** - risk-accepted deviations with **mandatory expiry**.
+- **Aging & overdue escalation** - by severity and owner.
 - **Root-cause and recurrence** analysis.
 
 ## 2. Data models
@@ -92,7 +92,7 @@ for _, e in exc[exc.Status == "Active"].iterrows():
 
 ### 3c. Recurrence analysis
 
-Group issues by `RootCause` / `SourceRef` to find repeat offenders — the same control failing every quarter signals a systemic problem, not a one-off.
+Group issues by `RootCause` / `SourceRef` to find repeat offenders - the same control failing every quarter signals a systemic problem, not a one-off.
 
 ## 4. The hub of the toolkit
 
