@@ -5,16 +5,31 @@ Joins the control matrix, policy register, and risk register into a single
 auditor-friendly matrix: framework clause -> control -> policies -> risks ->
 last test result -> evidence link. Also reports failing controls.
 
-Usage:
-    python build_traceability.py
+>>> BEFORE YOU RUN: edit the values in the CHANGE ME block below. <<<
+Search this file for CHANGE_ME. See CONVENTIONS.md and DIY-GUIDE.md (task B5).
 
-Expects these CSVs in the working directory (copy the toolkit templates and
-point them at your live registers):
-    control-matrix.csv, policy-register.csv, risk-register.csv
+Governance rule: this only BUILDS a report. It changes no register data.
 
-Requires: pandas, openpyxl   (pip install pandas openpyxl)
+Usage: python build_traceability.py
+Requires: pandas, openpyxl (pip install pandas openpyxl)
 """
+import os
 import pandas as pd
+
+# ============================================================================
+# vvv                          CHANGE ME                                  vvv
+# Folder that holds your live register CSVs. Replace the token (keep quotes).
+# Leave as "." if you run this from inside your registers folder.
+# Needs: control-matrix.csv, policy-register.csv, risk-register.csv
+# ----------------------------------------------------------------------------
+
+REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\registers>>"   # CHANGE ME
+
+# ^^^                          CHANGE ME                                  ^^^
+# ============================================================================
+
+if REGISTER_DIR and REGISTER_DIR != "." and "CHANGE_ME" not in REGISTER_DIR:
+    os.chdir(REGISTER_DIR)
 
 
 def split_refs(value: str):
