@@ -1,0 +1,7 @@
+ObligationID,Source,Reference,Requirement,Type,Owner,ControlIDs,Status,NextObligationDate,FrequencyMonths,Evidence
+OBL-001,GDPR,Art. 32,Security of processing,Regulatory,DPO,CTRL-AC-001;CTRL-EP-001,Met,,,\\fileserver\GRC
+OBL-002,PCI DSS v4,Req 8.3,Strong authentication for access,Regulatory,CISO,CTRL-AC-002,Partial,,,
+OBL-003,ISO 27001,A.5.30,ICT readiness for continuity,Standard,BCM Coordinator,CTRL-BK-001,Met,,,
+OBL-004,Customer Contract X,Sec 7.2,Annual security attestation,Contractual,CISO,CTRL-AW-003,Met,2026-12-31,12,
+OBL-005,Local Data Law,Sec 12,Breach notification within 72h,Regulatory,DPO,,Gap,,,
+OBL-006,GDPR,Art. 30,Records of processing,Regulatory,DPO,,Met,2026-12-31,12,
