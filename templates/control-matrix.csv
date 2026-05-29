@@ -1,0 +1,9 @@
+ControlID,Title,FrameworkRefs,Owner,Tester,TestType,Frequency,LastTested,NextTestDate,LastResult,EvidenceLink,ExceptionID
+CTRL-AC-001,Privileged group membership reviewed,ISO27001:A.8.2;NISTCSF:PR.AC-4,IT Manager,Internal Audit,Automated,Quarterly,2026-03-15,2026-06-15,Pass,\\fileserver\GRC\04_Evidence\2026\Q1\CTRL-AC-001,
+CTRL-AC-002,Password policy enforced,ISO27001:A.5.17;NISTCSF:PR.AC-1,IT Manager,Internal Audit,Automated,Quarterly,2026-03-15,2026-06-15,Pass,\\fileserver\GRC\04_Evidence\2026\Q1\CTRL-AC-002,
+CTRL-EP-001,Disk encryption enabled,ISO27001:A.8.24;NISTCSF:PR.DS-1,IT Manager,Internal Audit,Automated,Monthly,2026-04-01,2026-05-01,Pass,\\fileserver\GRC\04_Evidence\2026\Q2\CTRL-EP-001,
+CTRL-EP-002,Endpoint protection current,ISO27001:A.8.7;NISTCSF:DE.CM-4,IT Manager,Internal Audit,Automated,Monthly,2026-04-01,2026-05-01,Pass,\\fileserver\GRC\04_Evidence\2026\Q2\CTRL-EP-002,
+CTRL-NW-001,Host firewall enabled,ISO27001:A.8.20;NISTCSF:PR.AC-5,IT Manager,Internal Audit,Automated,Monthly,2026-04-01,2026-05-01,Pass,\\fileserver\GRC\04_Evidence\2026\Q2\CTRL-NW-001,
+CTRL-BK-001,Backups tested,ISO27001:A.8.13;NISTCSF:PR.IP-4,IT Manager,Internal Audit,Hybrid,Quarterly,2026-03-15,2026-06-15,Partial,\\fileserver\GRC\04_Evidence\2026\Q1\CTRL-BK-001,EXC-007
+CTRL-VM-001,Vendor due diligence complete,ISO27001:A.5.19;NISTCSF:ID.SC-2,Procurement Lead,GRC,Manual,Annual,2026-01-10,2027-01-10,Pass,\\fileserver\GRC\06_Vendors,
+CTRL-AW-003,Security awareness training,ISO27001:A.6.3;NISTCSF:PR.AT-1,HR Manager,GRC,Manual,Annual,2026-02-01,2027-02-01,Pass,\\fileserver\GRC\04_Evidence\2026\Q1\CTRL-AW-003,
