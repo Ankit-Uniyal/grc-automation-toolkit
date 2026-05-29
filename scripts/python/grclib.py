@@ -20,9 +20,37 @@ import pandas as pd
 
 
 def load_register(path: str) -> pd.DataFrame:
+    """Load a CSV register into a DataFrame with friendly errors.
+
+    Instead of a raw stack trace, this prints a clear, actionable message
+    when the file is missing so a new analyst knows exactly what to fix.
+    """
     if not os.path.exists(path):
-        raise FileNotFoundError(f"Register not found: {path}")
+        raise SystemExit(
+            f"ERROR: register file not found: {path}"
+            "\n  - Check the path is correct (see the CHANGE ME line in this script)."
+            "\n  - Try the sample data in templates/ first, e.g. copy"
+            " templates/risk-register.csv next to the script and re-run."
+        )
     return pd.read_csv(path)
+
+
+def require_columns(df: pd.DataFrame, required, name: str = "the register") -> None:
+    """Fail with a clear message if expected columns are missing.
+
+    Call this right after load_register so a column typo or wrong file gives
+    a readable explanation instead of a pandas KeyError traceback.
+    Example: require_columns(df, ["RiskID", "Likelihood", "Impact"], "risk register")
+    """
+    missing = [c for c in required if c not in df.columns]
+    if missing:
+        have = ", ".join(map(str, df.columns)) or "(none)"
+        raise SystemExit(
+            f"ERROR: {name} is missing required column(s): {', '.join(missing)}"
+            f"\n  - Columns found in the file: {have}"
+            "\n  - Fix the CSV header (check spelling/case) and re-run."
+            "\n  - Compare against the matching sample file in templates/."
+        )
 
 
 def save_register(df: pd.DataFrame, path: str) -> None:
