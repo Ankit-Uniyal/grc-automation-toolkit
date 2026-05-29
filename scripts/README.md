@@ -1,3 +1,13 @@
+
+> [!IMPORTANT]
+> **Before running any script, edit its `CHANGE_ME` values.**
+> Each script has a `# vvv CHANGE ME vvv` block near the top. Open the script, press `Ctrl+F`,
+> search for `CHANGE_ME`, and replace each `<<CHANGE_ME: example>>` token with your real value
+> (keep the quotes). Full walkthrough: **[../DIY-GUIDE.md](../DIY-GUIDE.md)** · convention: **[../CONVENTIONS.md](../CONVENTIONS.md)**.
+>
+> **Governance rule:** every script here only **reports, collects, tracks, or notifies**. None of
+> them delete, disable, deprovision, change permissions, accept risk, or send breach notices.
+
 # Scripts Index
 
 Runnable automation for the toolkit. Copy the CSV templates from `../templates` into your GRC share first, then point each script at your live registers (most Python scripts expect the CSVs in the current working directory).
