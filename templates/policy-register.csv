@@ -1,0 +1,7 @@
+PolicyID,Title,Owner,Version,Status,ApprovedDate,ReviewFrequencyMonths,NextReviewDate,FrameworkRefs,AttestationRequired,StorageLink
+POL-ISMS-001,Information Security Policy,CISO,2.1,Approved,2026-03-01,12,2027-03-01,ISO27001:A.5.1;NISTCSF:GV.PO,Yes,\\fileserver\GRC\01_Policies\POL-ISMS-001.docx
+POL-ISMS-002,Access Control Policy,CISO,1.4,Approved,2026-02-15,12,2027-02-15,ISO27001:A.5.15;NISTCSF:PR.AC,Yes,\\fileserver\GRC\01_Policies\POL-ISMS-002.docx
+POL-ISMS-003,Acceptable Use Policy,IT Manager,3.0,Approved,2026-01-20,12,2027-01-20,ISO27001:A.5.10;NISTCSF:PR.AT,Yes,\\fileserver\GRC\01_Policies\POL-ISMS-003.docx
+POL-ISMS-004,Incident Response Policy,CISO,1.2,Approved,2025-11-10,12,2026-11-10,ISO27001:A.5.24;NISTCSF:RS.RP,No,\\fileserver\GRC\01_Policies\POL-ISMS-004.docx
+POL-ISMS-005,Backup and Recovery Policy,IT Manager,1.0,Draft,,12,,ISO27001:A.8.13;NISTCSF:PR.IP,No,\\fileserver\GRC\01_Policies\drafts\POL-ISMS-005-DRAFT.docx
+POL-ISMS-006,Data Retention Policy,DPO,2.0,Approved,2025-09-01,24,2027-09-01,ISO27001:A.5.33;NISTCSF:PR.IP,No,\\fileserver\GRC\01_Policies\POL-ISMS-006.docx
