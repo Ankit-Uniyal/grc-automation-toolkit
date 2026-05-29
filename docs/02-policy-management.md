@@ -35,7 +35,7 @@ This single CSV (kept as an Excel `.xlsx` master) drives every automation below.
 ### 3a. Review-due engine (PowerShell)
 
 ```powershell
-# scripts/powershell/Get-PolicyReviewsDue.ps1
+# Inline example (copy into your own .ps1; not a committed script) - policy reviews due
 param([string]$RegisterPath = "\\fileserver\GRC\01_Policies\policy-register.csv",[int]$WarnDays = 30)
 $today = Get-Date
 Import-Csv $RegisterPath | ForEach-Object {
@@ -64,7 +64,7 @@ Import-Csv $RegisterPath | ForEach-Object {
 ### 3c. Attestation campaign (PowerShell + Outlook)
 
 ```powershell
-# scripts/powershell/Send-PolicyAttestation.ps1  (uses Outlook COM, on-prem friendly)
+# Inline example (copy into your own .ps1; not a committed script) - policy attestation via Outlook COM, on-prem friendly
 param([string]$PolicyTitle,[string]$Link,[string[]]$Recipients)
 $ol = New-Object -ComObject Outlook.Application
 foreach ($r in $Recipients) {
@@ -99,7 +99,7 @@ See `scripts/power-automate/policy-review-reminder.flow.md` for the step list.
 Because `FrameworkRefs` is structured, you can auto-build a coverage matrix:
 
 ```python
-# scripts/python/policy_coverage.py
+# Inline example (copy into your own .py; not a committed script) - policy coverage matrix
 import pandas as pd
 df = pd.read_csv("policy-register.csv")
 rows = []
