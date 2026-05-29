@@ -18,7 +18,7 @@ Runnable automation for the toolkit. Copy the CSV templates from `../templates` 
 |---|---|
 | `powershell/GrcToolkit.psm1` | Reusable PowerShell module: register I/O, logging, SHA-256, date helpers, Outlook notifications, evidence capture. `Import-Module ./GrcToolkit.psm1`. |
 | `python/grclib.py` | Python helpers: load/save registers, date math (next-due/days-left/overdue), ref splitting, hashing, logging, banding. `from grclib import ...`. |
-| `powershell/Invoke-GrcDailyRun.ps1` | Master orchestrator — runs the recurring PowerShell + Python jobs in one scheduled pass. |
+| `powershell/Invoke-GrcDailyRun.ps1` | Master orchestrator - runs the recurring PowerShell + Python jobs in one scheduled pass. |
 
 ## PowerShell (`powershell/`)
 
@@ -27,7 +27,7 @@ Runnable automation for the toolkit. Copy the CSV templates from `../templates` 
 | `Send-ComplianceReminders.ps1` | Email testers about due/overdue control tests (`-WhatIf` supported). | 04 |
 | `Invoke-EvidenceCollection.ps1` | Harvest technical evidence (AD, BitLocker, AV, firewall, patches), hash + manifest. | 05 |
 | `Register-GrcTasks.ps1` | Register recurring jobs in Windows Task Scheduler under `svc-grc`. | 04 |
-| `Invoke-GrcDailyRun.ps1` | Orchestrate the full daily/weekly run. | — |
+| `Invoke-GrcDailyRun.ps1` | Orchestrate the full daily/weekly run. | - |
 
 Inline examples in the docs also cover folder scaffolding/drift (01), config baseline & drift (18), workpaper checks (16), and patch compliance (17).
 
@@ -66,6 +66,6 @@ pip install pandas numpy matplotlib openpyxl
 ## Safety rules for all scripts
 
 - Run under a **dedicated least-privilege service account**; never a personal admin.
-- **No secrets in code** — Windows Credential Manager / DPAPI / gMSA only.
+- **No secrets in code** - Windows Credential Manager / DPAPI / gMSA only.
 - Scripts **report, collect, and notify**; they do not delete, disable, deprovision, or change permissions. Keep irreversible actions human-approved.
-- Keep this folder version-controlled; deploy a copy to the share — don't edit the running copy directly.
+- Keep this folder version-controlled; deploy a copy to the share - don't edit the running copy directly.
