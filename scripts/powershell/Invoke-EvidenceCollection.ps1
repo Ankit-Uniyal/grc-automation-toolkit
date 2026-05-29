@@ -28,7 +28,7 @@ param(
 # ----------------------------------------------------------------------------
 
 if (-not $EvidenceRoot) {
-    $EvidenceRoot = '<<CHANGE_ME: \\fileserver\GRC\evidence>>'   # CHANGE ME
+    $EvidenceRoot = '<<CHANGE_ME: \\fileserver\GRC\04_Evidence>>'   # CHANGE ME
 }
 
 # ^^^                          CHANGE ME                                  ^^^
