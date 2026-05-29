@@ -1,6 +1,6 @@
 # 05 · Automated Evidence Collection
 
-> **Pillar:** Audit & assurance. Evidence gathering is the single most automatable part of GRC. In a non-cloud shop, most evidence already lives on Windows endpoints, Active Directory, file servers, and applications you can query locally. Harvest it on a schedule, hash it, and file it — so audits stop being fire drills.
+> **Pillar:** Audit & assurance. Evidence gathering is the single most automatable part of GRC. In a non-cloud shop, most evidence already lives on Windows endpoints, Active Directory, file servers, and applications you can query locally. Harvest it on a schedule, hash it, and file it - so audits stop being fire drills.
 
 ---
 
@@ -8,9 +8,9 @@
 
 - **Scheduled harvesting** of standard evidence (configs, exports, logs, screenshots).
 - **Consistent filing** into `04_Evidence/<Year>/<Quarter>/<ControlID>/`.
-- **Integrity** — SHA-256 manifest so you can prove evidence wasn't altered.
-- **Coverage check** — which controls are missing current-period evidence.
-- **Chain of custody** — who collected what, when, from where.
+- **Integrity** - SHA-256 manifest so you can prove evidence wasn't altered.
+- **Coverage check** - which controls are missing current-period evidence.
+- **Chain of custody** - who collected what, when, from where.
 
 ## 2. Evidence that scripts can collect with zero cloud
 
@@ -33,11 +33,11 @@
 ### 3a. Evidence harvester with hashing (PowerShell)
 
 > [!TIP]
-> **Script:** [`scripts/powershell/Invoke-EvidenceCollection.ps1`](../scripts/powershell/Invoke-EvidenceCollection.ps1) — harvests standard technical evidence (AD, BitLocker, AV, firewall, patches), files it by control & quarter, hashes each artifact (SHA-256), and writes a tamper-evident manifest. Each collector is a small scriptblock, so you can add or remove evidence items easily. Edit its `CHANGE ME` block first.
+> **Script:** [`scripts/powershell/Invoke-EvidenceCollection.ps1`](../scripts/powershell/Invoke-EvidenceCollection.ps1) - harvests standard technical evidence (AD, BitLocker, AV, firewall, patches), files it by control & quarter, hashes each artifact (SHA-256), and writes a tamper-evident manifest. Each collector is a small scriptblock, so you can add or remove evidence items easily. Edit its `CHANGE ME` block first.
 
 The manifest gives you a tamper-evident chain of custody: re-hash any file later and compare to prove integrity.
 
-### 3b. UI / app evidence that has no API — Power Automate Desktop
+### 3b. UI / app evidence that has no API - Power Automate Desktop
 
 For systems with no command line (legacy desktop apps, on-prem web admin consoles), use PAD to:
 1. Open the app and navigate to the relevant screen.
