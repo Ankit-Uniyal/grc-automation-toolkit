@@ -24,7 +24,7 @@ from grclib import load_register, days_left
 # Leave as "." if you run this from inside your registers folder.
 # ----------------------------------------------------------------------------
 
-REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\registers>>"   # CHANGE ME
+REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\00_Admin\registers>>"   # CHANGE ME
 
 # Days-left threshold at which an open issue is escalated, per severity:
 ESCALATE_DAYS = {"Critical": 0, "High": 0, "Medium": 7, "Low": 14}   # CHANGE ME (optional)
