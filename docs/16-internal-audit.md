@@ -1,18 +1,18 @@
 # 16 · Internal Audit Management
 
-> **Pillar:** Independent assurance. This pillar automates the audit universe, risk-based audit planning, sampling, and finding management — the internal-audit lifecycle — distinct from the always-on *audit readiness* in docs/08.
+> **Pillar:** Independent assurance. This pillar automates the audit universe, risk-based audit planning, sampling, and finding management - the internal-audit lifecycle - distinct from the always-on *audit readiness* in docs/08.
 
 ---
 
 ## 1. What to automate
 
-- **Audit universe** — auditable entities scored by risk to drive the plan.
-- **Risk-based plan** — auto-rank what to audit and when.
-- **Reproducible sampling** — defensible, seed-based sample selection.
-- **Workpaper indexing** — consistent structure and completeness checks.
-- **Finding management** — push findings straight into the issue/CAPA register.
+- **Audit universe** - auditable entities scored by risk to drive the plan.
+- **Risk-based plan** - auto-rank what to audit and when.
+- **Reproducible sampling** - defensible, seed-based sample selection.
+- **Workpaper indexing** - consistent structure and completeness checks.
+- **Finding management** - push findings straight into the issue/CAPA register.
 
-## 2. Data model — `audit-universe.csv`
+## 2. Data model - `audit-universe.csv`
 
 | Column | Notes |
 |---|---|
