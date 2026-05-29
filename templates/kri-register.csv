@@ -1,0 +1,9 @@
+Metric,SourcePillar,GreenMax,AmberMax,Direction,Description
+overdue_control_tests,docs/04,0,3,lower_is_better,Control tests past due date
+critical_residual_risks,docs/03,0,2,lower_is_better,Residual risk score >= 15
+overdue_capa,docs/15,0,5,lower_is_better,Open issues past due date
+expired_exceptions,docs/15,0,1,lower_is_better,Active exceptions past expiry
+sla_breached_vulns,docs/17,0,5,lower_is_better,Critical/High vulns past SLA
+training_completion_pct,docs/20,95,84,higher_is_better,Mandatory training completion percentage
+overdue_obligations,docs/10,0,1,lower_is_better,Regulatory/contractual filings past due
+open_audit_findings_high,docs/16,0,2,lower_is_better,Open audit findings High or above
