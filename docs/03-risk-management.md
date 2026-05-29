@@ -37,66 +37,21 @@
 
 ### 3a. Scoring + heatmap generator (Python)
 
-```python
-# scripts/python/risk_engine.py
-import pandas as pd
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import numpy as np
-
-df = pd.read_csv("risk-register.csv")
-df["InherentScore"] = df.Likelihood * df.Impact
-df["ResidualScore"] = df.ResidualLikelihood * df.ResidualImpact
-
-def band(s):
-    if s >= 15: return "Critical"
-    if s >= 8:  return "High"
-    if s >= 4:  return "Medium"
-    return "Low"
-df["ResidualBand"] = df.ResidualScore.apply(band)
-df.to_csv("risk-register-scored.csv", index=False)
-
-# 5x5 heatmap of residual risk counts
-grid = np.zeros((5,5), dtype=int)
-for _, r in df.iterrows():
-    grid[5-int(r.ResidualImpact), int(r.ResidualLikelihood)-1] += 1
-plt.imshow(grid, cmap="RdYlGn_r")
-plt.colorbar(label="Number of risks")
-plt.xlabel("Likelihood"); plt.ylabel("Impact")
-plt.xticks(range(5), range(1,6)); plt.yticks(range(5), range(5,0,-1))
-for i in range(5):
-    for j in range(5):
-        if grid[i,j]: plt.text(j, i, grid[i,j], ha="center", va="center")
-plt.title("Residual Risk Heatmap")
-plt.tight_layout(); plt.savefig("risk-heatmap.png", dpi=120)
-print(df.ResidualBand.value_counts())
-```
+> [!TIP]
+> **Script:** [`scripts/python/risk_engine.py`](../scripts/python/risk_engine.py) — scores the register (inherent + residual), bands each risk, writes `risk-register-scored.csv`, and renders `risk-heatmap.png` for your board deck. Edit its `CHANGE ME` block, then run `python risk_engine.py`.
 
 Drop `risk-heatmap.png` straight into your board deck — no manual matrix building.
 
 ### 3b. Overdue treatment chaser (PowerShell)
 
-```powershell
-# scripts/powershell/Get-OverdueRiskActions.ps1
-param([string]$RegisterPath = "\\fileserver\GRC\02_Risk\risk-register.csv")
-$today = Get-Date
-Import-Csv $RegisterPath |
-  Where-Object { $_.Status -ne 'Closed' -and [datetime]$_.ActionDueDate -lt $today } |
-  Select-Object RiskID, Title, Owner, ActionDueDate, Treatment |
-  Sort-Object ActionDueDate
-```
+> [!TIP]
+> **Script:** [`scripts/powershell/Get-OverdueRiskActions.ps1`](../scripts/powershell/Get-OverdueRiskActions.ps1) — reports treatment actions past their `ActionDueDate` **and** risks past their review cadence (`LastReviewed` + `ReviewFrequencyMonths`). Add `-Notify` to draft Outlook reminders to each owner. Edit its `CHANGE ME` block first.
 
 Pipe the result into the same Outlook reminder pattern from `docs/02` to nudge each owner.
 
 ### 3c. Review-aging check
 
-```powershell
-Import-Csv $RegisterPath | ForEach-Object {
-  $due = ([datetime]$_.LastReviewed).AddMonths([int]$_.ReviewFrequencyMonths)
-  if ($due -lt (Get-Date)) { "$($_.RiskID) review overdue (due $($due.ToString('yyyy-MM-dd')))" }
-}
-```
+Review-aging (risks not reviewed within `ReviewFrequencyMonths`) is handled by the same script as the overdue chaser above — see [`Get-OverdueRiskActions.ps1`](../scripts/powershell/Get-OverdueRiskActions.ps1), which reports both in one pass.
 
 ### 3d. Excel + Power Query (no-code dashboard)
 
@@ -122,7 +77,7 @@ print(affected[["RiskID","Title","ResidualScore"]])
 ## 5. Scheduling & ownership
 
 - **Owner:** Risk Manager.
-- Run `risk_engine.py` **nightly/weekly** (writes scored CSV + heatmap to `02_Risk`).
+- Run `risk_engine.py` **nightly/weekly** (writes scored CSV + heatmap to `registers`).
 - Run overdue/aging checks **weekly**, email owners.
 
 ## 6. Maturity ladder
