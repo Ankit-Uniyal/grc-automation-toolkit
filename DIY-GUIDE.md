@@ -91,19 +91,27 @@ Create this structure once (change the root to match your environment):
 
 ```text
 <<PATH: \\fileserver\GRC>>\          <-- CHANGE ME (your shared-drive root)
-  registers\        (the CSVs from templates\ live here - your live data)
-  evidence\         (collected evidence, write-once)
-  reports\          (generated dashboards & packs)
+  00_Admin\         (program admin + this toolkit; also holds \registers and \reports)
+    registers\      (working copies of the CSVs from templates\ - your live data)
+    reports\        (generated dashboards & packs)
+    toolkit\        (a copy of this toolkit, incl. its scripts\ folder)
+  01_Policies\      (policy-register.csv, approved policies)
+  02_Risk\          (risk-register.csv, assessments)
+  03_Controls\      (control-matrix.csv, test results)
+  04_Evidence\      (collected evidence, write-once, hashed)
+  05_Assets\  06_Vendors\  07_Audits\  08_Incidents\  99_Archive\
   logs\             (script run logs)
-  scripts\          (a copy of this toolkit's scripts\ folder)
 ```
 
+> [!NOTE]
+> This is the same numbered taxonomy defined in `docs/01-folder-governance.md`. Registers that have a natural home live there (risk -> `02_Risk\`, controls -> `03_Controls\`); registers without a dedicated folder (policy, vendor, incident, vuln, issues, KRI) live together in `00_Admin\registers\`, which is what the scripts default to. The script `CHANGE_ME` defaults already point at these paths.
+
 1. Create the folders above on your shared drive.
-2. Copy every file from the toolkit's **`templates\`** folder into **`registers\`**.
+2. Copy each CSV from the toolkit's **`templates\`** folder into its matching folder (e.g. `risk-register.csv` -> `02_Risk\`, `control-matrix.csv` -> `03_Controls\`, the rest -> `00_Admin\registers\`).
 3. These copied CSVs are now your **live registers** — you will maintain these, not the templates.
 
 > [!TIP]
-> Keep the **`registers\`** folder backed up / versioned. It is your real GRC data.
+> Keep your register folders backed up / versioned. It is your real GRC data.
 
 ## A4. Set up the service account & email
 
@@ -156,7 +164,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** Owners of policies due for review automatically get an email reminder; nothing is changed for them — they just get nudged.
 
-**2. You need:** `registers\policy-register.csv` filled in (Policy, Owner, OwnerEmail, NextReviewDate).
+**2. You need:** `00_Admin\registers\policy-register.csv` filled in (Policy, Owner, OwnerEmail, NextReviewDate).
 
 **3. Do this:**
 1. Open `scripts\powershell\Send-ComplianceReminders.ps1` in VS Code.
@@ -182,7 +190,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** Inherent/residual scores, risk levels, and a treatment-due flag are recalculated for every risk and written back to the register.
 
-**2. You need:** `registers\risk-register.csv` (Likelihood, Impact, ControlEffectiveness columns filled).
+**2. You need:** `02_Risk\risk-register.csv` (Likelihood, Impact, ControlEffectiveness columns filled).
 
 **3. Do this:**
 1. Open `scripts\python\risk_engine.py`.
@@ -202,7 +210,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** Files referenced in your control matrix are copied into a dated, write-once evidence folder and hashed (SHA-256) so they cannot be silently altered.
 
-**2. You need:** `registers\control-matrix.csv` with an `EvidenceSourcePath` column.
+**2. You need:** `03_Controls\control-matrix.csv` with an `EvidenceSourcePath` column.
 
 **3. Do this:**
 1. Open `scripts\powershell\Invoke-EvidenceCollection.ps1`.
@@ -214,7 +222,7 @@ If both print without errors, you are ready.
 
 **4. Values to change:** `$ControlMatrixPath`, `$EvidenceRoot`.
 
-**5. Verify:** A new dated folder appears under `evidence\` with copied files and a `hashes.csv` manifest.
+**5. Verify:** A new dated folder appears under `04_Evidence\` with copied files and a `hashes.csv` manifest.
 
 > [!WARNING]
 > This script only **copies and hashes**. It never deletes or moves your source files.
@@ -223,7 +231,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** A per-manager review pack (who has access to what) is generated so managers can certify or flag access. The script never changes access itself.
 
-**2. You need:** an export of users/entitlements as a CSV in `registers\`.
+**2. You need:** an export of users/entitlements as a CSV in `00_Admin\registers\`.
 
 **3. Do this:**
 1. Open `scripts\python\build_uar_packs.py`.
@@ -256,7 +264,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** Vendors with expiring certifications (e.g. SOC 2, ISO) or overdue reassessments are listed and owners notified.
 
-**2. You need:** `registers\vendor-register.csv` (CertExpiryDate, NextReviewDate, Owner, OwnerEmail).
+**2. You need:** `00_Admin\registers\vendor-register.csv` (CertExpiryDate, NextReviewDate, Owner, OwnerEmail).
 
 **3. Do this:** set paths in the vendor monitoring script, then run it.
 
@@ -268,7 +276,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** Open incidents are checked against response/resolution SLAs; breaches are flagged and summarised.
 
-**2. You need:** `registers\incident-register.csv`.
+**2. You need:** `00_Admin\registers\incident-register.csv`.
 
 **3. Do this:** run `python incident_monitor.py` after setting its paths.
 
@@ -283,7 +291,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** Vulnerabilities past their remediation SLA (by severity) are flagged and counted.
 
-**2. You need:** `registers\vuln-register.csv`.
+**2. You need:** `00_Admin\registers\vuln-register.csv`.
 
 **3. Do this:** run `python vuln_sla.py` after setting paths and SLA days per severity.
 
@@ -295,7 +303,7 @@ If both print without errors, you are ready.
 
 **1. Outcome:** Open corrective/preventive actions are aged, overdue ones flagged, owners reminded.
 
-**2. You need:** `registers\issue-register.csv`.
+**2. You need:** `00_Admin\registers\issue-register.csv`.
 
 **3. Do this:** run `python issue_tracker.py` after setting paths.
 
