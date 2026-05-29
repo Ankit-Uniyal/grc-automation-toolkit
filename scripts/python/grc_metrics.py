@@ -2,10 +2,15 @@
 grc_metrics.py - Aggregate headline GRC metrics from every pillar into a single
 RAG (red/amber/green) dashboard, and append a snapshot for trend tracking.
 
-Reads whatever registers exist in the working directory (missing ones are skipped
+Reads whatever registers exist in REGISTER_DIR (missing ones are skipped
 gracefully) and the thresholds in kri-register.csv.
 
-Usage:  python grc_metrics.py
+>>> BEFORE YOU RUN: edit the values in the CHANGE ME block below. <<<
+Search this file for CHANGE_ME. See CONVENTIONS.md and DIY-GUIDE.md (task B11).
+
+Governance rule: this only MEASURES and REPORTS. It changes no register data.
+
+Usage: python grc_metrics.py
 Outputs: grc-metrics.csv (current), grc-metrics-history.csv (appended)
 Requires: pandas, grclib
 """
@@ -13,6 +18,20 @@ import os
 import pandas as pd
 from datetime import date
 from grclib import load_register, overdue
+
+# ============================================================================
+# vvv                          CHANGE ME                                  vvv
+# Folder that holds your live register CSVs. Replace the token (keep quotes).
+# Leave as "." if you run this from inside your registers folder.
+# ----------------------------------------------------------------------------
+
+REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\registers>>"   # CHANGE ME
+
+# ^^^                          CHANGE ME                                  ^^^
+# ============================================================================
+
+if REGISTER_DIR and REGISTER_DIR != "." and "CHANGE_ME" not in REGISTER_DIR:
+    os.chdir(REGISTER_DIR)
 
 
 def safe(fn, default=0):
