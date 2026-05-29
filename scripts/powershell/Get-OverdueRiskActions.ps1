@@ -29,10 +29,10 @@ param(
 # vvv CHANGE ME vvv ---------------------------------------------------------
 # Replace each <<CHANGE_ME: ...>> token with your real value (keep the quotes).
 if (-not $RegisterPath) {
-    $RegisterPath = "<<CHANGE_ME: \\fileserver\GRC\registers\risk-register.csv>>"  # CHANGE ME
+    $RegisterPath = "<<CHANGE_ME: \\fileserver\GRC\02_Risk\risk-register.csv>>"  # CHANGE ME
 }
 if (-not $OutputCsv) {
-    $OutputCsv    = "<<CHANGE_ME: \\fileserver\GRC\reports\overdue-risk-actions.csv>>" # CHANGE ME
+    $OutputCsv    = "<<CHANGE_ME: \\fileserver\GRC\00_Admin\reports\overdue-risk-actions.csv>>" # CHANGE ME
 }
 # Mailbox / sender used only when -Notify is supplied:
 $FromMailbox     = "<<CHANGE_ME: grc@yourcompany.com>>"   # CHANGE ME (-Notify only)
