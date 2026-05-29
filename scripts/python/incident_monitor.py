@@ -25,7 +25,7 @@ from grclib import load_register
 # (the daily orchestrator does that for you).
 # ----------------------------------------------------------------------------
 
-REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\registers>>"   # CHANGE ME
+REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\00_Admin\registers>>"   # CHANGE ME
 
 # SLA hours per severity (optional - tune to your IR policy):
 SLA_HOURS = {
