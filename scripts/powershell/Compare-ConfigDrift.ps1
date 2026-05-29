@@ -27,10 +27,10 @@ param(
 
 # vvv CHANGE ME vvv ---------------------------------------------------------
 if (-not $BaselinePath) {
-    $BaselinePath = "<<CHANGE_ME: \\fileserver\GRC\evidence\config\baseline-$env:COMPUTERNAME.json>>"  # CHANGE ME
+    $BaselinePath = "<<CHANGE_ME: \\fileserver\GRC\04_Evidence\config\baseline-$env:COMPUTERNAME.json>>"  # CHANGE ME
 }
 if (-not $ReportPath) {
-    $ReportPath   = "<<CHANGE_ME: \\fileserver\GRC\reports\config-drift-$env:COMPUTERNAME.txt>>"     # CHANGE ME
+    $ReportPath   = "<<CHANGE_ME: \\fileserver\GRC\00_Admin\reports\config-drift-$env:COMPUTERNAME.txt>>"     # CHANGE ME
 }
 # ^^^ CHANGE ME ^^^ ---------------------------------------------------------
 
