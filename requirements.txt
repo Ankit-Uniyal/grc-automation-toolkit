@@ -1,0 +1,12 @@
+# Python dependencies for grc-automation-toolkit (scripts/python).
+# Install into a virtual environment:
+#     python -m venv .venv
+#     .venv\Scripts\activate        # Windows
+#     pip install -r requirements.txt
+#
+# Tested with Python 3.11+.
+
+pandas>=2.0        # all register I/O and aging math
+numpy>=1.24        # risk_engine heatmap grid
+matplotlib>=3.7    # risk_engine heatmap PNG
+openpyxl>=3.1      # reading/writing .xlsx registers and packs
