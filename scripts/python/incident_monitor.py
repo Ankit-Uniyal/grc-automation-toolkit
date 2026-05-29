@@ -4,22 +4,42 @@ incident_monitor.py - SLA timers and regulatory breach-clock monitor for inciden
 Run frequently during an active incident (e.g. every 15-30 min via Task Scheduler).
 Writes incident-alerts.csv and prints alerts for the IR lead / DPO.
 
-Usage:  python incident_monitor.py
-Requires: pandas, grclib
+>>> BEFORE YOU RUN: edit the values in the CHANGE ME block below. <<<
+Search this file for CHANGE_ME. See CONVENTIONS.md and DIY-GUIDE.md (task B7).
 
-NOTE: This tracks timers and reminds humans. Declaring a breach and notifying a
-regulator is a human/legal decision - never automate the notification itself.
+Governance rule: this tracks timers and reminds humans. Declaring a breach and
+notifying a regulator is a human/legal decision - never automate the notification.
+
+Usage: python incident_monitor.py
+Requires: pandas, grclib
 """
+import os
 import pandas as pd
 from datetime import datetime
 from grclib import load_register
 
+# ============================================================================
+# vvv                          CHANGE ME                                  vvv
+# Folder that holds your live register CSVs. Replace the token (keep quotes).
+# Leave as "." if you run this script from inside your registers folder
+# (the daily orchestrator does that for you).
+# ----------------------------------------------------------------------------
+
+REGISTER_DIR = r"<<CHANGE_ME: \\fileserver\GRC\registers>>"   # CHANGE ME
+
+# SLA hours per severity (optional - tune to your IR policy):
 SLA_HOURS = {
-    "Critical": {"ack": 1, "contain": 4, "resolve": 24},
-    "High":     {"ack": 4, "contain": 12, "resolve": 72},
-    "Medium":   {"ack": 8, "contain": 48, "resolve": 168},
-    "Low":      {"ack": 24, "contain": 96, "resolve": 336},
+    "Critical": {"ack": 1,  "contain": 4,  "resolve": 24},    # CHANGE ME (optional)
+    "High":     {"ack": 4,  "contain": 12, "resolve": 72},    # CHANGE ME (optional)
+    "Medium":   {"ack": 8,  "contain": 48, "resolve": 168},   # CHANGE ME (optional)
+    "Low":      {"ack": 24, "contain": 96, "resolve": 336},   # CHANGE ME (optional)
 }
+
+# ^^^                          CHANGE ME                                  ^^^
+# ============================================================================
+
+if REGISTER_DIR and REGISTER_DIR != "." and "CHANGE_ME" not in REGISTER_DIR:
+    os.chdir(REGISTER_DIR)
 
 
 def hrs(a, b):
