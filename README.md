@@ -99,6 +99,9 @@ grc-automation-toolkit/
 
 ---
 
+**Browse by area:** [`docs/`](docs/README.md) - all 21 pillar guides | [`templates/`](templates/README.md) - register CSVs for every pillar | [`scripts/`](scripts/README.md) - PowerShell, Python & Power Automate code
+
+
 ## Maturity model
 
 | Level | Name | Characteristics |
