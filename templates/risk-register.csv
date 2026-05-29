@@ -1,0 +1,6 @@
+RiskID,Title,Category,Owner,Likelihood,Impact,InherentScore,ControlIDs,ResidualLikelihood,ResidualImpact,ResidualScore,Treatment,ActionDueDate,Status,LastReviewed,ReviewFrequencyMonths
+RISK-001,Ransomware via phishing,Cyber,IT Manager,4,5,20,CTRL-EP-002;CTRL-AW-003,2,4,8,Mitigate,2026-06-30,In Progress,2026-04-01,6
+RISK-002,Loss of key supplier,Operational,Procurement Lead,3,4,12,CTRL-VM-001,2,3,6,Mitigate,2026-07-15,Open,2026-03-20,12
+RISK-003,Unauthorized access to PII,Compliance,CISO,3,5,15,CTRL-AC-001;CTRL-AC-002,2,4,8,Mitigate,2026-05-31,Open,2026-04-10,6
+RISK-004,Data loss - no tested backups,Operational,IT Manager,3,5,15,CTRL-BK-001,1,4,4,Mitigate,2026-06-15,In Progress,2026-04-01,6
+RISK-005,Stale privileged accounts,Cyber,IT Security,3,4,12,CTRL-AC-001,2,3,6,Mitigate,2026-05-30,Open,2026-04-15,3
