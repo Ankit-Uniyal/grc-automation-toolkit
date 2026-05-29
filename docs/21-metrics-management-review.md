@@ -6,11 +6,11 @@
 
 ## 1. What to automate
 
-- **Metric collection** — pull headline numbers from each pillar's register.
-- **KRI/KPI dashboard** — thresholds with RAG (red/amber/green) status.
-- **Trend tracking** — store monthly snapshots to show direction.
-- **Management-review pack** — assemble the standing agenda inputs automatically.
-- **Board summary** — one page of the numbers that matter.
+- **Metric collection** - pull headline numbers from each pillar's register.
+- **KRI/KPI dashboard** - thresholds with RAG (red/amber/green) status.
+- **Trend tracking** - store monthly snapshots to show direction.
+- **Management-review pack** - assemble the standing agenda inputs automatically.
+- **Board summary** - one page of the numbers that matter.
 
 ## 2. Example KRIs/KPIs (define yours in `kri-register.csv`)
 
