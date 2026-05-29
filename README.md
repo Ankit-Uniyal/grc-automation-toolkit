@@ -1,3 +1,11 @@
+
+> [!IMPORTANT]
+> ### New here? Start with these two pages
+> - **[DIY-GUIDE.md](DIY-GUIDE.md)** - granular, click-by-click steps for every task (no scripting experience needed).
+> - **[CONVENTIONS.md](CONVENTIONS.md)** - the 60-second guide to the **`CHANGE_ME`** convention: how to find and edit every value you must set for your environment.
+>
+> Every script marks the values **you** must change with a bright **`CHANGE_ME`** token and a `# CHANGE ME` comment - search a script for `CHANGE_ME` to find them all.
+
 # GRC Automation Toolkit (Non-Cloud Edition)
 
 > A practical, end-to-end implementation guide and toolkit for **automating and engineering Governance, Risk & Compliance (GRC)** in organizations that are **not cloud-native** — teams still running GRC on **shared network drives, OneDrive/SharePoint, and Excel**, on **Windows endpoints and on-prem servers**.
