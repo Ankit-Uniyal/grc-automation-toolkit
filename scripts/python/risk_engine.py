@@ -22,6 +22,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use("Agg")  # no display needed on a server/workstation
 import matplotlib.pyplot as plt
+from grclib import load_register, require_columns
 
 # ============================================================================
 # vvv                          CHANGE ME                                  vvv
@@ -56,7 +57,8 @@ def band(score: int) -> str:
 
 
 def main(path: str = RISK_REGISTER_PATH) -> None:
-    df = pd.read_csv(path)
+    df = load_register(path)
+    require_columns(df, ["Likelihood", "Impact", "ResidualLikelihood", "ResidualImpact"], "risk register")
     df["InherentScore"] = df.Likelihood * df.Impact
     df["ResidualScore"] = df.ResidualLikelihood * df.ResidualImpact
     df["ResidualBand"] = df.ResidualScore.apply(band)
