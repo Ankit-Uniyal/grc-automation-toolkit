@@ -28,7 +28,7 @@ param(
 
 # Folder that holds the toolkit's PowerShell scripts:
 if (-not $ToolkitRoot) {
-    $ToolkitRoot = '<<CHANGE_ME: \\fileserver\GRC\toolkit\scripts\powershell>>'   # CHANGE ME
+    $ToolkitRoot = '<<CHANGE_ME: \\fileserver\GRC\00_Admin\toolkit\scripts\powershell>>'   # CHANGE ME
 }
 
 # Domain service account that will run the tasks (least privilege):
@@ -37,8 +37,8 @@ if (-not $ServiceAccount) {
 }
 
 # Path to your live control matrix and evidence root (used as task arguments):
-$ControlMatrix = '<<CHANGE_ME: \\fileserver\GRC\registers\control-matrix.csv>>'     # CHANGE ME
-$EvidenceRoot  = '<<CHANGE_ME: \\fileserver\GRC\evidence>>'                          # CHANGE ME
+$ControlMatrix = '<<CHANGE_ME: \\fileserver\GRC\03_Controls\control-matrix.csv>>'     # CHANGE ME
+$EvidenceRoot  = '<<CHANGE_ME: \\fileserver\GRC\04_Evidence>>'                          # CHANGE ME
 
 # ^^^                          CHANGE ME                                  ^^^
 # ============================================================================
