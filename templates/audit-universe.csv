@@ -1,0 +1,7 @@
+EntityID,Entity,RiskScore,LastAuditDate,AuditFrequencyMonths,Regulated,Owner
+AU-009,Access management process,18,2024-11-01,24,Yes,IT Security
+AU-010,Change management,14,2025-06-01,24,No,Change Manager
+AU-011,Vendor management,16,2024-03-01,24,Yes,Procurement Lead
+AU-012,Backup and recovery,20,2023-12-01,12,No,IT Manager
+AU-013,Payroll process,15,2025-01-15,24,Yes,HR Manager
+AU-014,Incident response,12,2025-09-01,24,No,IR Lead
