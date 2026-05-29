@@ -1,0 +1,5 @@
+ProcessID,Process,Owner,Criticality,RTO_Hours,RPO_Hours,ProvenRTO_Hours,DependencyAssets,DependencyVendors,LastTested,TestFrequencyMonths
+BP-007,Payroll run,HR Manager,Critical,24,24,36,AST-002;AST-005,VEN-001,2026-02-15,12
+BP-008,Customer support,Ops Manager,High,8,4,6,AST-001;AST-003,VEN-002,2026-03-01,12
+BP-009,Order processing,Sales Ops,High,12,8,,AST-001,,2025-11-20,12
+BP-010,Email and comms,IT Manager,Medium,4,1,2,AST-003,VEN-002,2026-01-10,12
