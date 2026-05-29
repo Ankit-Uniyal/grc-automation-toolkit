@@ -16,7 +16,7 @@ Requires: pandas, grclib
 """
 import os
 import pandas as pd
-from grclib import load_register, days_left
+from grclib import load_register, days_left, require_columns
 
 # ============================================================================
 # vvv                          CHANGE ME                                  vvv
@@ -35,6 +35,7 @@ if REGISTER_DIR and REGISTER_DIR != "." and "CHANGE_ME" not in REGISTER_DIR:
 
 def main():
     v = load_register("vuln-register.csv")
+    require_columns(v, ["DueDate", "Status"], "vulnerability register")
     open_v = v[v.Status == "Open"].copy()
     open_v["DaysLeft"] = open_v.DueDate.apply(days_left)
     open_v["SLA_State"] = open_v.DaysLeft.apply(lambda d: "BREACHED" if d < 0 else "On track")
