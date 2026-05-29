@@ -20,7 +20,7 @@ Requires: pandas, grclib
 import os
 import sys
 import pandas as pd
-from grclib import load_register
+from grclib import load_register, require_columns
 
 # ============================================================================
 # vvv                          CHANGE ME                                  vvv
@@ -39,6 +39,7 @@ def main(membership_csv):
     if REGISTER_DIR and REGISTER_DIR != "." and "CHANGE_ME" not in REGISTER_DIR:
         rules_path = os.path.join(REGISTER_DIR, "sod-rules.csv")
     rules = load_register(rules_path)
+    require_columns(rules, ["RoleA", "RoleB", "Conflict"], "SoD rules")
     mem = load_register(membership_csv)
     user_roles = mem.groupby("Member").Group.apply(set).to_dict()
     violations = []
