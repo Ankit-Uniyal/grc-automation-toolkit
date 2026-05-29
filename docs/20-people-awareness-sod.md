@@ -6,11 +6,11 @@
 
 ## 1. What to automate
 
-- **Training completion** — who has/has not completed mandatory training.
-- **Awareness campaign tracking** — by topic and audience.
-- **Phishing simulation ingestion** — normalize results, track repeat clickers.
-- **SoD conflict detection** — flag users holding conflicting role combinations.
-- **Onboarding/role-change controls** — required training before access.
+- **Training completion** - who has/has not completed mandatory training.
+- **Awareness campaign tracking** - by topic and audience.
+- **Phishing simulation ingestion** - normalize results, track repeat clickers.
+- **SoD conflict detection** - flag users holding conflicting role combinations.
+- **Onboarding/role-change controls** - required training before access.
 
 ## 2. Data models
 
@@ -102,7 +102,7 @@ for v in violations:
     print("SoD VIOLATION:", v)
 ```
 
-SoD violations should open an **issue** (docs/15) for review — either remediate the access or document a compensating control as an **exception** with expiry.
+SoD violations should open an **issue** (docs/15) for review - either remediate the access or document a compensating control as an **exception** with expiry.
 
 ## 4. Onboarding control
 
