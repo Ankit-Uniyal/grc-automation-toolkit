@@ -18,7 +18,7 @@
 ### 2a. Extract access from Active Directory (PowerShell)
 
 ```powershell
-# scripts/powershell/Export-AccessSnapshot.ps1
+# Inline example (copy into your own .ps1; not a committed script) - export access from AD
 param([string]$OutDir = "\\fileserver\GRC\04_Evidence\AccessReviews")
 $stamp = Get-Date -Format 'yyyy-MM-dd'
 New-Item -ItemType Directory -Path $OutDir -Force | Out-Null
@@ -40,10 +40,8 @@ $rows | Export-Csv "$OutDir\group_membership_$stamp.csv" -NoTypeInformation
 
 Use `scripts/python/build_uar_packs.py` — it merges users + group membership and writes one `UAR_<manager>_<period>.xlsx` per manager with empty Keep/Revoke columns, then (with `--prev`) reconciles against the previous snapshot.
 
-```bash
-python build_uar_packs.py users_2026-06-01.csv group_membership_2026-06-01.csv \
-    --prev group_membership_2026-03-01.csv --period 2026Q2
-```
+> [!TIP]
+> **Script:** [`scripts/python/build_uar_packs.py`](../scripts/python/build_uar_packs.py) — builds per-manager User Access Review (UAR) packs and reconciles the current access snapshot against the previous one (lists grants/removals). Run: `python build_uar_packs.py users.csv groups.csv --prev <last-snapshot>`.
 
 "New grants since last review" (`uar_added.csv`) is exactly what auditors ask for — now one command.
 
