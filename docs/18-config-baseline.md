@@ -1,15 +1,15 @@
 # 18 · Configuration Baseline & Drift Detection
 
-> **Pillar:** Secure configuration assurance. Hardening standards (CIS-style baselines) are only useful if you can prove systems still match them. This pillar captures a baseline snapshot and detects **drift** over time on Windows endpoints/servers — no cloud, no agent platform.
+> **Pillar:** Secure configuration assurance. Hardening standards (CIS-style baselines) are only useful if you can prove systems still match them. This pillar captures a baseline snapshot and detects **drift** over time on Windows endpoints/servers - no cloud, no agent platform.
 
 ---
 
 ## 1. What to automate
 
-- **Baseline capture** — snapshot key security settings as the approved standard.
-- **Drift detection** — compare current state to the baseline and flag differences.
-- **Change reconciliation** — match drift to approved changes (docs/14).
-- **Reporting** — per-host configuration compliance.
+- **Baseline capture** - snapshot key security settings as the approved standard.
+- **Drift detection** - compare current state to the baseline and flag differences.
+- **Change reconciliation** - match drift to approved changes (docs/14).
+- **Reporting** - per-host configuration compliance.
 
 ## 2. The automation
 
@@ -63,7 +63,7 @@ $driftReport | Tee-Object -FilePath "config-drift.txt"
 
 ### 2c. Reconcile drift to approved changes
 
-Cross-reference `config-drift.txt` against the change register (docs/14). Drift with **no matching ChangeID** is a potential unauthorized change — escalate to an issue (docs/15).
+Cross-reference `config-drift.txt` against the change register (docs/14). Drift with **no matching ChangeID** is a potential unauthorized change - escalate to an issue (docs/15).
 
 ## 3. Scheduling & ownership
 
