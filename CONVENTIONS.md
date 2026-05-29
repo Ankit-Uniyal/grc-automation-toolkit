@@ -5,7 +5,7 @@
 > If you only learn one thing before running anything, learn the **CHANGE-ME convention** below.
 
 This single page explains the symbols, colours, and tokens used across all docs and scripts so
-that anyone — even a non-developer — can tell *exactly* what to edit before running a script.
+that anyone - even a non-developer - can tell *exactly* what to edit before running a script.
 
 ---
 
@@ -47,7 +47,7 @@ If you want the replaceable parts to actually appear in a **different colour** w
 3. Add `CHANGE_ME` and `CHANGE ME` to the keyword list in settings.
 4. Every replaceable value now renders in a bold colour of your choice, so editing is foolproof.
 
-A ready-to-paste VS Code setting is provided in [`.vscode/settings.json`](.vscode/settings.json) in this repo —
+A ready-to-paste VS Code setting is provided in [`.vscode/settings.json`](.vscode/settings.json) in this repo -
 open the repo folder in VS Code and the colours turn on automatically.
 
 ---
@@ -74,13 +74,13 @@ Anything **not** wrapped in `<<...>>` is safe to leave as-is unless a comment sa
 The guides use GitHub's native coloured alert boxes so important notes stand out visually:
 
 > [!NOTE]
-> Background / context — nice to know.
+> Background / context - nice to know.
 
 > [!TIP]
 > A shortcut or best-practice that saves you time.
 
 > [!IMPORTANT]
-> Do not skip this — the outcome depends on it.
+> Do not skip this - the outcome depends on it.
 
 > [!WARNING]
 > A safety / governance boundary. Usually means *a human must approve*, never automate.
@@ -102,7 +102,7 @@ The guides use GitHub's native coloured alert boxes so important notes stand out
 
 ## 5. Where to go next
 
-- New here? Start with the **[DIY-GUIDE.md](DIY-GUIDE.md)** — granular, click-by-click steps for every task.
+- New here? Start with the **[DIY-GUIDE.md](DIY-GUIDE.md)** - granular, click-by-click steps for every task.
 - Want the big picture? See the **[README.md](README.md)**.
-- Looking for a specific pillar? Browse **[docs/](docs/)** (01–21).
+- Looking for a specific pillar? Browse **[docs/](docs/)** (01-21).
 - Ready to run code? See **[scripts/](scripts/)** and edit the `CHANGE_ME` values first.
