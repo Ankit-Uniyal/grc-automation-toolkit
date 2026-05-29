@@ -30,11 +30,11 @@ import matplotlib.pyplot as plt
 # ----------------------------------------------------------------------------
 
 # Where your live risk register lives (the source of truth):
-RISK_REGISTER_PATH = r"<<CHANGE_ME: \\fileserver\GRC\registers\risk-register.csv>>"   # CHANGE ME
+RISK_REGISTER_PATH = r"<<CHANGE_ME: \\fileserver\GRC\02_Risk\risk-register.csv>>"   # CHANGE ME
 
 # Where to write the scored output and the heatmap image:
-OUTPUT_CSV  = r"<<CHANGE_ME: \\fileserver\GRC\reports\risk-register-scored.csv>>"     # CHANGE ME
-OUTPUT_PNG  = r"<<CHANGE_ME: \\fileserver\GRC\reports\risk-heatmap.png>>"             # CHANGE ME
+OUTPUT_CSV  = r"<<CHANGE_ME: \\fileserver\GRC\00_Admin\reports\risk-register-scored.csv>>"     # CHANGE ME
+OUTPUT_PNG  = r"<<CHANGE_ME: \\fileserver\GRC\00_Admin\reports\risk-heatmap.png>>"             # CHANGE ME
 
 # Scoring thresholds (optional - tune to your risk methodology):
 THRESHOLD_CRITICAL = 15   # CHANGE ME (optional)
