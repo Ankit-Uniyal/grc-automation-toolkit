@@ -31,7 +31,7 @@ param(
 
 # Path to your live control matrix (the source of truth):
 if (-not $RegisterPath) {
-    $RegisterPath = '<<CHANGE_ME: \\fileserver\GRC\registers\control-matrix.csv>>'   # CHANGE ME
+    $RegisterPath = '<<CHANGE_ME: \\fileserver\GRC\03_Controls\control-matrix.csv>>'   # CHANGE ME
 }
 
 # Sender mailbox shown on the reminder emails:
