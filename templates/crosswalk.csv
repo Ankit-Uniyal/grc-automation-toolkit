@@ -1,0 +1,23 @@
+ControlID,Framework,Clause,ClauseTitle
+CTRL-AC-001,ISO27001,A.8.2,Privileged access rights
+CTRL-AC-001,NISTCSF,PR.AC-4,Access permissions managed
+CTRL-AC-001,SOC2,CC6.1,Logical access controls
+CTRL-AC-001,PCIDSS,7.2,Least privilege access
+CTRL-AC-002,ISO27001,A.5.17,Authentication information
+CTRL-AC-002,NISTCSF,PR.AC-1,Identities and credentials managed
+CTRL-AC-002,PCIDSS,8.3,Strong authentication
+CTRL-EP-001,ISO27001,A.8.24,Use of cryptography
+CTRL-EP-001,NISTCSF,PR.DS-1,Data-at-rest protected
+CTRL-EP-001,GDPR,Art.32,Security of processing
+CTRL-EP-002,ISO27001,A.8.7,Protection against malware
+CTRL-EP-002,NISTCSF,DE.CM-4,Malicious code detected
+CTRL-NW-001,ISO27001,A.8.20,Network security
+CTRL-NW-001,NISTCSF,PR.AC-5,Network integrity protected
+CTRL-NW-001,PCIDSS,1.2,Network security controls
+CTRL-BK-001,ISO27001,A.8.13,Information backup
+CTRL-BK-001,NISTCSF,PR.IP-4,Backups conducted and tested
+CTRL-BK-001,SOC2,A1.2,Recovery infrastructure
+CTRL-AW-003,ISO27001,A.6.3,Awareness education and training
+CTRL-AW-003,NISTCSF,PR.AT-1,Users trained
+CTRL-VM-001,ISO27001,A.5.19,Information security in supplier relationships
+CTRL-VM-001,NISTCSF,ID.SC-2,Suppliers assessed
