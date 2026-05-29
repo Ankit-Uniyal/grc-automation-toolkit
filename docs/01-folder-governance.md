@@ -52,7 +52,7 @@ Because metadata lives **in the name**, PowerShell/Python can index everything w
 ### 4a. Scaffold the taxonomy (PowerShell)
 
 ```powershell
-# scripts/powershell/New-GrcFolderTree.ps1
+# Inline example (copy into your own .ps1; not a committed script) - scaffold the taxonomy
 param([string]$Root = "\\fileserver\GRC")
 $tree = @(
   "00_Admin","01_Policies\drafts","01_Policies\archive","02_Risk",
@@ -68,7 +68,7 @@ foreach ($d in $tree) {
 ### 4b. Detect naming / structure drift (PowerShell)
 
 ```powershell
-# scripts/powershell/Test-FileNaming.ps1  — flags files that break the convention
+# Inline example (copy into your own .ps1; not a committed script) - flags files that break the convention
 param([string]$Root = "\\fileserver\GRC")
 $pattern = '^(POL|RA|EVD|CTRL|VEN|AUD)_[A-Za-z0-9\-]+_.+_v\d+\.\d+_\d{4}-\d{2}-\d{2}\.[A-Za-z0-9]+$'
 Get-ChildItem $Root -Recurse -File |
@@ -115,7 +115,7 @@ Get-ChildItem "\\fileserver\GRC\04_Evidence" -Recurse -File |
 ## 7. Scheduling & ownership
 
 - **Owner:** GRC Analyst.
-- Run `Test-FileNaming.ps1` and the stale-doc check **weekly** via Task Scheduler; email the violation CSV to the owner (see `docs/04-control-testing.md` for the scheduling recipe).
+- Run the file-naming check (the inline example above) and the stale-doc check **weekly** via Task Scheduler; email the violation CSV to the owner (see `docs/04-control-testing.md` for the scheduling recipe).
 
 ## 8. Maturity ladder
 
