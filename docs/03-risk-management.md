@@ -1,18 +1,18 @@
 # 03 · Risk Management Automation
 
-> **Pillar:** Risk. A risk register on a shared drive rots fast — scores go stale, treatments are never followed up, and the heatmap is rebuilt by hand before every board meeting. Automate the math and the chasing; keep the judgment human.
+> **Pillar:** Risk. A risk register on a shared drive rots fast - scores go stale, treatments are never followed up, and the heatmap is rebuilt by hand before every board meeting. Automate the math and the chasing; keep the judgment human.
 
 ---
 
 ## 1. What to automate
 
-- **Scoring** — compute inherent and residual risk from likelihood × impact, consistently.
-- **Heatmap & dashboard** — regenerate the risk matrix automatically.
-- **Treatment tracking** — flag overdue mitigation actions and owners.
-- **Aging & review** — surface risks not reviewed within their cadence.
-- **Roll-ups** — summarize by category, owner, business unit for reporting.
+- **Scoring** - compute inherent and residual risk from likelihood × impact, consistently.
+- **Heatmap & dashboard** - regenerate the risk matrix automatically.
+- **Treatment tracking** - flag overdue mitigation actions and owners.
+- **Aging & review** - surface risks not reviewed within their cadence.
+- **Roll-ups** - summarize by category, owner, business unit for reporting.
 
-## 2. Data model — `risk-register.csv`
+## 2. Data model - `risk-register.csv`
 
 | Column | Notes |
 |---|---|
@@ -20,12 +20,12 @@
 | Title | Ransomware via phishing |
 | Category | Cyber / Operational / Compliance |
 | Owner | IT Manager |
-| Likelihood | 1–5 |
-| Impact | 1–5 |
+| Likelihood | 1-5 |
+| Impact | 1-5 |
 | InherentScore | = Likelihood × Impact (auto) |
 | ControlIDs | CTRL-AC-001; CTRL-AW-003 |
-| ResidualLikelihood | 1–5 (post-control) |
-| ResidualImpact | 1–5 |
+| ResidualLikelihood | 1-5 (post-control) |
+| ResidualImpact | 1-5 |
 | ResidualScore | auto |
 | Treatment | Mitigate / Accept / Transfer / Avoid |
 | ActionDueDate | 2026-06-30 |
@@ -38,20 +38,20 @@
 ### 3a. Scoring + heatmap generator (Python)
 
 > [!TIP]
-> **Script:** [`scripts/python/risk_engine.py`](../scripts/python/risk_engine.py) — scores the register (inherent + residual), bands each risk, writes `risk-register-scored.csv`, and renders `risk-heatmap.png` for your board deck. Edit its `CHANGE ME` block, then run `python risk_engine.py`.
+> **Script:** [`scripts/python/risk_engine.py`](../scripts/python/risk_engine.py) - scores the register (inherent + residual), bands each risk, writes `risk-register-scored.csv`, and renders `risk-heatmap.png` for your board deck. Edit its `CHANGE ME` block, then run `python risk_engine.py`.
 
-Drop `risk-heatmap.png` straight into your board deck — no manual matrix building.
+Drop `risk-heatmap.png` straight into your board deck - no manual matrix building.
 
 ### 3b. Overdue treatment chaser (PowerShell)
 
 > [!TIP]
-> **Script:** [`scripts/powershell/Get-OverdueRiskActions.ps1`](../scripts/powershell/Get-OverdueRiskActions.ps1) — reports treatment actions past their `ActionDueDate` **and** risks past their review cadence (`LastReviewed` + `ReviewFrequencyMonths`). Add `-Notify` to draft Outlook reminders to each owner. Edit its `CHANGE ME` block first.
+> **Script:** [`scripts/powershell/Get-OverdueRiskActions.ps1`](../scripts/powershell/Get-OverdueRiskActions.ps1) - reports treatment actions past their `ActionDueDate` **and** risks past their review cadence (`LastReviewed` + `ReviewFrequencyMonths`). Add `-Notify` to draft Outlook reminders to each owner. Edit its `CHANGE ME` block first.
 
 Pipe the result into the same Outlook reminder pattern from `docs/02` to nudge each owner.
 
 ### 3c. Review-aging check
 
-Review-aging (risks not reviewed within `ReviewFrequencyMonths`) is handled by the same script as the overdue chaser above — see [`Get-OverdueRiskActions.ps1`](../scripts/powershell/Get-OverdueRiskActions.ps1), which reports both in one pass.
+Review-aging (risks not reviewed within `ReviewFrequencyMonths`) is handled by the same script as the overdue chaser above - see [`Get-OverdueRiskActions.ps1`](../scripts/powershell/Get-OverdueRiskActions.ps1), which reports both in one pass.
 
 ### 3d. Excel + Power Query (no-code dashboard)
 
@@ -65,7 +65,7 @@ This gives non-coders a self-refreshing dashboard tied to the same source of tru
 
 ## 4. Linking risk to controls
 
-`ControlIDs` ties each risk to the controls that mitigate it (see `docs/04`). A small join lets you answer "if CTRL-AC-001 fails its test, which risks just became under-treated?" — invaluable for board reporting and the Statement of Applicability.
+`ControlIDs` ties each risk to the controls that mitigate it (see `docs/04`). A small join lets you answer "if CTRL-AC-001 fails its test, which risks just became under-treated?" - invaluable for board reporting and the Statement of Applicability.
 
 ```python
 risks = pd.read_csv("risk-register.csv")
